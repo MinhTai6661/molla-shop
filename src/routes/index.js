@@ -13,6 +13,26 @@ const publicRoutes = [
         component: ContactPage,
         layout: DefaultLayout,
     },
+    {
+        path: config.router.aboutUs,
+        component: HomePage,
+        layout: DefaultLayout,
+    },
+    {
+        path: config.router.product,
+        component: ContactPage,
+        layout: DefaultLayout,
+    },
+    {
+        path: config.router.wishList,
+        component: HomePage,
+        layout: DefaultLayout,
+    },
+    {
+        path: config.router.cart,
+        component: ContactPage,
+        layout: DefaultLayout,
+    },
 ];
 
 export default publicRoutes;
