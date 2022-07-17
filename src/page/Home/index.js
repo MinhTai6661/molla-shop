@@ -1,5 +1,11 @@
+import HomeBanner from './components/HomeBanner';
+
 function HomePage() {
-    return <h1>Home Page</h1>;
+    return (
+        <div className="content">
+            <HomeBanner />
+        </div>
+    );
 }
 
 export default HomePage;

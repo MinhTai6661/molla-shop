@@ -1,0 +1,36 @@
+.wrapper {
+    height: 100vh;
+    position: relative;
+    align-items: center;
+    background-size: cover;
+    background-position: 50%;
+}
+.inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.top-suggest,
+.bottom-suggest {
+    color: var(--white-color);
+    font-size: 2.4rem;
+    font-weight: 300;
+    display: block;
+}
+.tiltle {
+    font-family: flamingregular, serif;
+    color: var(--white-color);
+    font-size: 15rem;
+    line-height: 8rem;
+    margin-bottom: 50px;
+}
+.bottom-suggest {
+    margin-bottom: 30px;
+}
+.btn {
+    font-weight: 300;
+    font-size: 1.6rem;
+}

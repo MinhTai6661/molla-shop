@@ -24,3 +24,32 @@ body {
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: flamingregular;
+    src: url(/assets/font/flaming-webfont.woff2);
+    font-weight: 400;
+}
+
+//custom slider
+.slick-dots {
+    bottom: 30px !important;
+    position: absolute;
+}
+
+.slick-dots li button::before {
+    // display: none !important;
+    content: '';
+    font-family: 'Courier New', Courier, monospace !important;
+    background-color: var(--primary-color) !important;
+    border-radius: 100% !important;
+    width: 10px !important;
+    height: 10px !important;
+    transform-origin: right;
+    transition: 0.2s;
+}
+.slick-dots li.slick-active button::before {
+    transform: translateX(-5px);
+    border-radius: 10px !important;
+    width: 20px !important;
+    background-color: var(--primary-color) !important;
+}

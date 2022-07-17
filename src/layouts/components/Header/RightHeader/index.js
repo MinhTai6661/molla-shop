@@ -9,7 +9,8 @@ import Tippy from '@tippyjs/react/headless';
 const { Search } = Input;
 
 const cx = className.bind(style);
-function RightHeader() {
+function RightHeader({ showHeader }) {
+    console.log('RightHeader ~ showHeader', showHeader);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('right-header')}>
@@ -28,10 +29,15 @@ function RightHeader() {
                     className={(nav) => cx('cart', { active: nav.isActive })}
                 >
                     <ShoppingCartOutlined />
-                    <span className={cx('cart-quantity')}>3</span>
+                    <span
+                        className={cx('cart-quantity')}
+                        style={{ borderColor: !showHeader ? '#B1B2B4' : 'var(--header-color)' }}
+                    >
+                        3
+                    </span>
                 </NavLink>
 
-                <Tippy
+                {/* <Tippy
                     render={(attrs) => (
                         <div style={{ background: '#999' }} tabIndex="-1" {...attrs}>
                             My tippy box
@@ -39,7 +45,7 @@ function RightHeader() {
                     )}
                 >
                     <button>My button</button>
-                </Tippy>
+                </Tippy> */}
             </div>
         </div>
     );
