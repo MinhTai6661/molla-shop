@@ -1,0 +1,10 @@
+.brand__wrapper {
+    margin-top: -8px;
+    .slick-slide {
+        border: 1px solid #ebebeb;
+        border-right: none;
+        &:last-child {
+            border-right: 1px solid #ebebeb;
+        }
+    }
+}

@@ -18,7 +18,7 @@ function BannerItem({ background, topSuggest, title, bottomSuggest, btnContent }
                 <span className={cx('top-suggest')}>{topSuggest}</span>
                 <h1 className={cx('tiltle')}> {title}</h1>
                 <span className={cx('bottom-suggest')}>{bottomSuggest}</span>
-                <Button className={cx('btn')} rouded outline primary>
+                <Button className={cx('btn')} rouded outline>
                     {btnContent}
                 </Button>
             </div>

@@ -22,27 +22,6 @@
         color: var(--primary-color);
     }
 }
-.cart {
-    position: relative;
-    &.active {
-        color: var(--primary-color);
-    }
-    &-quantity {
-        color: var(--white-color);
-        position: absolute;
-        font-size: 1.2rem;
-        background-color: var(--secondary-color);
-        width: 16px;
-        height: 16px;
-        border-radius: 100rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        top: 0px;
-        right: -5px;
-        border: 2px solid;
-    }
-}
 
 .search {
     color: var(--white-color);
@@ -71,5 +50,29 @@
     }
     &-icon {
         font-size: 2rem;
+    }
+}
+
+.cart {
+    position: relative;
+    &.active {
+        color: var(--primary-color);
+    }
+    &-quantity {
+        color: var(--white-color);
+        position: absolute;
+        font-size: 1.2rem;
+        background-color: var(--secondary-color);
+        width: 16px;
+        height: 16px;
+        border-radius: 100rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0px;
+        right: -5px;
+        border: 2px solid;
+    }
+    &__list {
     }
 }

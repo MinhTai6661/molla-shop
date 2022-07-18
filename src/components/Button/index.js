@@ -7,6 +7,8 @@ const cx = classNames.bind(styles);
 
 function Button({
     primary = false,
+    fill,
+    secondary,
     outline = false,
     small = false,
     large = false,
@@ -31,7 +33,9 @@ function Button({
         large,
         text,
         disabled,
+        fill,
         rouded,
+        secondary,
         [className]: className,
     });
     const props = {

@@ -1,10 +1,11 @@
-import className from 'classnames/bind';
-import { Link, NavLink } from 'react-router-dom';
-import config from '~/config';
-import style from './menuRight.module.scss';
-import { Input } from 'antd';
 import { HeartOutlined, SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import Tippy from '@tippyjs/react/headless';
+import { Input } from 'antd';
+import className from 'classnames/bind';
+import { NavLink } from 'react-router-dom';
+import config from '~/config';
+import CartDropdown from '../../CartDropdown';
+import style from './menuRight.module.scss';
 
 const { Search } = Input;
 
@@ -24,28 +25,29 @@ function RightHeader({ showHeader }) {
                 >
                     <HeartOutlined />
                 </NavLink>
-                <NavLink
-                    to={config.router.cart}
-                    className={(nav) => cx('cart', { active: nav.isActive })}
-                >
-                    <ShoppingCartOutlined />
-                    <span
-                        className={cx('cart-quantity')}
-                        style={{ borderColor: !showHeader ? '#B1B2B4' : 'var(--header-color)' }}
-                    >
-                        3
-                    </span>
-                </NavLink>
 
-                {/* <Tippy
+                <Tippy
+                    distance={40}
+                    interactive={true}
                     render={(attrs) => (
-                        <div style={{ background: '#999' }} tabIndex="-1" {...attrs}>
-                            My tippy box
+                        <div {...attrs}>
+                            <CartDropdown />
                         </div>
                     )}
                 >
-                    <button>My button</button>
-                </Tippy> */}
+                    <NavLink
+                        to={config.router.cart}
+                        className={(nav) => cx('cart', { active: nav.isActive })}
+                    >
+                        <ShoppingCartOutlined />
+                        <span
+                            className={cx('cart-quantity')}
+                            style={{ borderColor: !showHeader ? '#B1B2B4' : 'var(--header-color)' }}
+                        >
+                            3
+                        </span>
+                    </NavLink>
+                </Tippy>
             </div>
         </div>
     );
