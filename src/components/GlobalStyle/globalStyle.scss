@@ -8,8 +8,8 @@
     --white-color: #fff;
     --text-color: #333;
     --header-color: #333;
-    --text-color: #777;
     --text-color-primary: #999;
+    --border-color-sidebar: rgba(255, 255, 255, 0.1);
 
     //size
     --header-height: 62.5px;
@@ -86,4 +86,16 @@ html *::-webkit-scrollbar-track {
 .slick-arrow {
     background-color: red !important;
     display: none !important;
+}
+
+//custom ant design
+.ant-row {
+    height: 100% !important;
+}
+
+// .ant-col > * {
+//     position: relative;
+//     top: -13px;
+// }
+@media (max-width: 769px) {
 }

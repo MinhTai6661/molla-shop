@@ -76,7 +76,7 @@ Button.propTypes = {
     text: PropTypes.bool,
     rouded: PropTypes.bool,
     disabled: PropTypes.bool,
-    rightIcon: PropTypes.bool,
+    rightIcon: PropTypes.node,
     leftIcon: PropTypes.node,
     to: PropTypes.string,
     href: PropTypes.string,

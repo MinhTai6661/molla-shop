@@ -11,6 +11,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    width: 100%;
 }
 
 .top-suggest,
@@ -33,4 +34,9 @@
 .btn {
     font-weight: 300;
     font-size: 1.6rem;
+}
+@media (max-width: 769px) {
+    .tiltle {
+        font-size: 9.4rem;
+    }
 }

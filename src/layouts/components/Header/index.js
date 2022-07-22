@@ -1,41 +1,27 @@
-import { Link } from 'react-router-dom';
-import config from '~/config';
+import className from 'classnames/bind';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import Container from '~/components/Container';
+import { resize, sidebarShowSlector } from '~/redux/selector';
+import style from './Header.module.scss';
 import LeftHeader from './LeftHeader';
 import RightHeader from './RightHeader';
-import className from 'classnames/bind';
-import style from './Header.module.scss';
-import { Col, Row } from 'antd';
-import { useEffect, useState } from 'react';
-import Container from '~/components/Container';
+
 const cx = className.bind(style);
 
 function Header() {
-    const [showHeader, setShowHeader] = useState(false);
-    useEffect(() => {
-        const handleEvent = () => {
-            // console.log(window.scrollY);
-            setShowHeader(window.scrollY >= 100 && true);
-        };
-        window.addEventListener('scroll', handleEvent);
-
-        return () => {
-            window.addEventListener('scroll', handleEvent);
-        };
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    console.log(showHeader);
+    const screenSize = useSelector(resize);
+    const dispatch = useDispatch();
     return (
-        <div className={cx('header', { 'show-color': showHeader })}>
-            <Container xs={23} className={cx('container')}>
-                <Row align="center">
-                    <Col span={12}>
-                        <LeftHeader />
-                    </Col>
-                    <Col span={12}>
-                        <RightHeader showHeader={showHeader} />
-                    </Col>
-                </Row>
+        <div className={cx('header', { 'show-color': screenSize.y >= 100 })}>
+            <Container xs={23} className={`${cx('container')}`}>
+                <div className={cx('inner')}>
+                    <div className={cx('left')}>
+                        <LeftHeader smallDeviceMode={screenSize.x <= 992} />
+                    </div>
+                    <div className={cx('right')}>
+                        <RightHeader showHeader={screenSize.y >= 100} />
+                    </div>
+                </div>
             </Container>
         </div>
     );

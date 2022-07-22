@@ -26,17 +26,20 @@ const tempData = {
         'https://d-themes.com/react/molla/demo-5/images/brands/8.png',
         'https://d-themes.com/react/molla/demo-5/images/brands/9.png',
     ],
-    // brands: {
-    //     leBarell: 'https://d-themes.com/react/molla/demo-5/images/brands/1.png',
-    //     someThing: 'https://d-themes.com/react/molla/demo-5/images/brands/2.png',
-    //     costaBrava: 'https://d-themes.com/react/molla/demo-5/images/brands/3.png',
-    //     oceanic: 'https://d-themes.com/react/molla/demo-5/images/brands/4.png',
-    //     fountain: 'https://d-themes.com/react/molla/demo-5/images/brands/5.png',
-    //     blackBird: 'https://d-themes.com/react/molla/demo-5/images/brands/6.png',
-    //     hugo: 'https://d-themes.com/react/molla/demo-5/images/brands/7.png',
-    //     mountain: 'https://d-themes.com/react/molla/demo-5/images/brands/8.png',
-    //     mrBooker: 'https://d-themes.com/react/molla/demo-5/images/brands/9.png',
-    // },
+    categories: [
+        {
+            title: "This Week's Most Wanted",
+            img: 'https://d-themes.com/react/molla/demo-5/images/home/banners/banner-1.jpg',
+        },
+        {
+            title: 'Trainers & Sportwear  Sale Up to 70% off',
+            img: 'https://d-themes.com/react/molla/demo-5/images/home/banners/banner-2.jpg',
+        },
+        {
+            title: "This Week'sMost Wanted",
+            img: 'https://d-themes.com/react/molla/demo-5/images/home/banners/banner-3.jpg',
+        },
+    ],
 };
 
 export default tempData;

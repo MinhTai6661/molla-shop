@@ -5,4 +5,5 @@ export const router = {
     product: '/product',
     wishList: '/wish-list',
     cart: '/cart',
+    checkout: '/checkout',
 };

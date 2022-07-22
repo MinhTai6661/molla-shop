@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import config from '~/config';
+import { CloseOutlined } from '@ant-design/icons';
 const cx = className.bind(style);
 
 function DropdownItem(props) {
@@ -26,9 +27,11 @@ function DropdownItem(props) {
                             alt="thumb"
                         />
                     </div>
-                    <span className={cx('delete')}>x</span>
                 </div>
             </Link>
+            <span className={cx('delete')}>
+                <CloseOutlined />
+            </span>
         </li>
     );
 }

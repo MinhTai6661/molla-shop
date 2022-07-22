@@ -2,7 +2,7 @@ import { HeartOutlined, SearchOutlined, ShoppingCartOutlined } from '@ant-design
 import Tippy from '@tippyjs/react/headless';
 import { Input } from 'antd';
 import className from 'classnames/bind';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import config from '~/config';
 import CartDropdown from '../../CartDropdown';
 import style from './menuRight.module.scss';
@@ -11,13 +11,14 @@ const { Search } = Input;
 
 const cx = className.bind(style);
 function RightHeader({ showHeader }) {
-    console.log('RightHeader ~ showHeader', showHeader);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('right-header')}>
                 <div className={cx('search')}>
                     <input className={cx('search-input')} placeholder="Search product..." />
-                    <SearchOutlined className={cx('search-icon')} />
+                    <Link to={config.router.product} className={cx('search-icon')}>
+                        <SearchOutlined />
+                    </Link>
                 </div>
                 <NavLink
                     to={config.router.wishList}

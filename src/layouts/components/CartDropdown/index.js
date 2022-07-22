@@ -7,6 +7,7 @@ import config from '~/config';
 import { Dropdown } from 'antd';
 import DropdownItem from './DropdownItem';
 import Button from '~/components/Button';
+import { ArrowRightOutlined } from '@ant-design/icons';
 
 const cx = className.bind(style);
 function CartDropdown(props) {
@@ -18,17 +19,19 @@ function CartDropdown(props) {
                 <DropdownItem />
                 <DropdownItem />
             </ul>
-            <div className={cx('total')}>
-                <span className={cx('total__label')}>TOTAL:</span>
-                <span className={cx('total__price')}>$123</span>
-            </div>
-            <div className={cx('btn__group')}>
-                <Button primary fill>
-                    View Cart
-                </Button>
-                <Button outline primary>
-                    Check Out
-                </Button>
+            <div className={cx('footer')}>
+                <div className={cx('total')}>
+                    <span className={cx('total__label')}>TOTAL:</span>
+                    <span className={cx('total__price')}>$123</span>
+                </div>
+                <div className={cx('btn__group')}>
+                    <Button to="/cart" primary fill>
+                        View Cart
+                    </Button>
+                    <Button to="/checkout" outline primary rightIcon={<ArrowRightOutlined />}>
+                        Checkout
+                    </Button>
+                </div>
             </div>
         </div>
     );
