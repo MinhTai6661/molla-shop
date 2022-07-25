@@ -4,6 +4,16 @@ $height-line: 2px;
     display: flex;
     align-items: center;
     height: 100%;
+    &-icon {
+        padding-right: 15px;
+        color: var(--white-color);
+        cursor: pointer;
+        height: 100%;
+        vertical-align: center;
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+    }
     &-header {
         display: none;
     }

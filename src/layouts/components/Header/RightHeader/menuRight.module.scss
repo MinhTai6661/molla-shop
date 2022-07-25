@@ -58,8 +58,15 @@ $distanceElement: 15px;
 }
 
 .cart {
+    display: block;
     padding-right: 0;
     position: relative;
+    color: var(--white-color);
+    cursor: pointer;
+    &-icon {
+        color: var(--white-color);
+        font-size: 2.5rem;
+    }
     &.active {
         color: var(--primary-color);
     }

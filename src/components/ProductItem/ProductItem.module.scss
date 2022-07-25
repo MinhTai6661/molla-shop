@@ -1,0 +1,209 @@
+div > .wrapper,
+li > .wrapper,
+a > .wrapper {
+    margin: 0 auto;
+}
+
+.wrapper {
+    display: block;
+    max-width: 227px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 10px 1px rgba(224, 224, 224, 0.5);
+    margin: 5px 0; //fix here if cause bugs
+    transition: box-shadow 0.2s;
+    position: relative;
+    &:hover {
+        box-shadow: 0px 0px 10px 2px rgba(224, 224, 224, 0.5);
+    }
+    &:hover .add {
+        transform: translateY(0);
+    }
+    &:hover .btn-group {
+        right: 20px;
+        opacity: 1;
+    }
+}
+
+.thumb {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.img {
+    width: 100%;
+    // height: 100%;
+}
+
+.add {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: 0.5s;
+    border: none;
+    background-color: var(--text-color);
+    color: var(--white-color);
+    border-radius: 0px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    height: 40px;
+    &:hover {
+        background-color: var(--primary-color);
+    }
+}
+.btn-group {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    opacity: 0;
+    transition: 0.2s ease-in-out;
+
+    .wishlist,
+    .quick-view {
+        display: block;
+        color: var(--white-color);
+        right: 0;
+        position: absolute;
+        border-radius: 100rem;
+        font-size: 1.2rem;
+    }
+    .wishlist {
+        // max-width: 130px;
+        line-height: 1rem;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+
+        &:hover span {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            background-color: var(--primary-color);
+        }
+        &:hover label {
+            opacity: 1;
+            width: 115px;
+            background-color: var(--primary-color);
+            transform: translateX(15px);
+        }
+        span {
+            background-color: var(--text-color);
+            border-radius: 100rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 30px;
+            z-index: 2;
+            transition: 0.3s;
+        }
+        label {
+            width: 100px;
+            display: flex;
+            align-items: center;
+            flex: 2;
+            padding-left: 10px;
+            opacity: 0;
+            transform: translateX(15px);
+            border-top-left-radius: 100rem;
+            border-bottom-left-radius: 100rem;
+            transition: 0.5s;
+            // height: 30px;
+            // overflow-y: hidden;
+            // width: 0;
+            // line-height: 1px;
+        }
+    }
+    .quick-view {
+        background-color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        top: 40px;
+        transition: 0.2s;
+        &:hover {
+            background-color: var(--primary-color);
+        }
+    }
+}
+
+.info {
+    margin-top: 10px;
+    text-align: center;
+    .category,
+    .title,
+    .price {
+        font-size: 1.4rem;
+        display: block;
+        font-weight: 300;
+        color: #ccc;
+    }
+    .category {
+        font-size: 1.3rem;
+        font-size: 1.3rem;
+        line-height: 1.2;
+        letter-spacing: -0.01rem;
+        margin-bottom: 0.3rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .title {
+        color: var(--text-color);
+        line-height: 1.4rem;
+        height: 2.8rem;
+        overflow: hidden;
+        display: block;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .price {
+        font-size: 1.5rem;
+        &-current {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        &-old {
+            margin-left: 10px;
+            color: #ccc;
+            font-weight: 500;
+            text-decoration: line-through;
+        }
+    }
+    // .updated-price {
+    //     .now-price {
+    //     }
+    //     .old-price {
+    //     }
+    // }
+}
+.tags {
+    position: absolute;
+    top: 0;
+}
+
+.evaluate {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 20px;
+    .rate {
+        line-height: 1.2rem;
+
+        &-icon {
+            font-size: 1.3rem;
+        }
+    }
+    .review {
+        margin-left: 10px;
+        color: #ccc;
+        font-size: 1.3rem;
+        line-height: 1.2rem;
+    }
+}

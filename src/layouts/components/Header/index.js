@@ -1,25 +1,42 @@
 import className from 'classnames/bind';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux/es/exports';
 import Container from '~/components/Container';
-import { resize, sidebarShowSlector } from '~/redux/selector';
+import { headerShowSlector, deviceModeSlelector } from '~/redux/selector';
+import { handleShowHeader } from '~/redux/showSlice';
 import style from './Header.module.scss';
 import LeftHeader from './LeftHeader';
 import RightHeader from './RightHeader';
-
+import { useDispatch } from 'react-redux/es/exports';
 const cx = className.bind(style);
 
 function Header() {
-    const screenSize = useSelector(resize);
     const dispatch = useDispatch();
+    useEffect(() => {
+        const handleEvent = () => {
+            dispatch(window.scrollY > 100 ? handleShowHeader(true) : handleShowHeader(false));
+        };
+        window.addEventListener('scroll', handleEvent);
+
+        return () => {
+            window.removeEventListener('scroll', handleEvent);
+        };
+    }, []);
+
+    const screenSize = useSelector(deviceModeSlelector);
+    const isShowHeader = useSelector(headerShowSlector);
     return (
-        <div className={cx('header', { 'show-color': screenSize.y >= 100 })}>
+        <div className={cx('header', { 'show-color': isShowHeader })}>
             <Container xs={23} className={`${cx('container')}`}>
                 <div className={cx('inner')}>
                     <div className={cx('left')}>
-                        <LeftHeader smallDeviceMode={screenSize.x <= 992} />
+                        <LeftHeader smallDeviceMode={screenSize.deviceMode === 'small'} />
                     </div>
                     <div className={cx('right')}>
-                        <RightHeader showHeader={screenSize.y >= 100} />
+                        <RightHeader
+                            showHeader={isShowHeader}
+                            smallDeviceMode={screenSize.deviceMode === 'small'}
+                        />
                     </div>
                 </div>
             </Container>

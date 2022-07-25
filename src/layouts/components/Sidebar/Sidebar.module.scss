@@ -1,7 +1,8 @@
 $colorOverlay: rgba(15, 15, 15, 0.8);
 
-.sidebar {
+.wrapper {
     position: relative;
+    transition: 0.5s;
 }
 .overlay {
     position: fixed;
@@ -13,24 +14,23 @@ $colorOverlay: rgba(15, 15, 15, 0.8);
     background-color: $colorOverlay;
     transition: 0.5s;
     display: none;
+    opacity: 0;
 }
-.isShow .overlay {
-    display: block;
-}
-.menu {
-    display: block;
+
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 280px;
-    background-color: var(--header-color);
     bottom: 0;
     z-index: 999;
-    padding: 20px;
+
     display: block;
-    position: fixed;
+    width: 280px;
+    padding: 20px;
     transform: translateX(-100%);
-    animation: fadeIn 0.5s ease;
+    transition: 0.5s;
+    background-color: var(--header-color);
+    // animation: fadeIn 0.5s ease;
 
     .header {
         display: flex;
@@ -52,10 +52,16 @@ $colorOverlay: rgba(15, 15, 15, 0.8);
         margin-top: 20px;
     }
 }
-.isShow .menu {
-    transform: translateX(0);
 
-    animation: fadeOut 0.5s ease;
+.isShow .overlay {
+    display: block;
+    transition: 0.5s;
+    opacity: 1;
+}
+.isShow .sidebar {
+    transform: translateX(0);
+    transition: 0.5s ease;
+    // animation: fadeOut 0.5s ease;
 }
 
 @keyframes fadeOut {

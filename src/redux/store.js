@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import resizeReducer from './resizeSlice';
-import sidebarShowReducer from './sidebarShowSlice';
+import deviceModeReducer from './deviceModeSlice';
+import sidebarShowReducer from './showSlice';
+import productsReducer from './productsSlice';
+import categoriesReducer from './CategoriesSlice';
+
 const rootReducer = {
-    resize: resizeReducer,
-    sidebarShow: sidebarShowReducer,
+    devicemode: deviceModeReducer,
+    showHeaderSidebar: sidebarShowReducer,
+    products: productsReducer,
+    categories: categoriesReducer,
 };
 const store = configureStore({ reducer: rootReducer });
 

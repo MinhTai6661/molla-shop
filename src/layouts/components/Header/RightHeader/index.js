@@ -10,16 +10,18 @@ import style from './menuRight.module.scss';
 const { Search } = Input;
 
 const cx = className.bind(style);
-function RightHeader({ showHeader }) {
+function RightHeader({ showHeader, smallDeviceMode }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('right-header')}>
-                <div className={cx('search')}>
-                    <input className={cx('search-input')} placeholder="Search product..." />
-                    <Link to={config.router.product} className={cx('search-icon')}>
-                        <SearchOutlined />
-                    </Link>
-                </div>
+                {!smallDeviceMode && (
+                    <div className={cx('search')}>
+                        <input className={cx('search-input')} placeholder="Search product..." />
+                        <Link to={config.router.product} className={cx('search-icon')}>
+                            <SearchOutlined />
+                        </Link>
+                    </div>
+                )}
                 <NavLink
                     to={config.router.wishList}
                     className={(nav) => cx('favorite', { active: nav.isActive })}
@@ -36,18 +38,20 @@ function RightHeader({ showHeader }) {
                         </div>
                     )}
                 >
-                    <NavLink
-                        to={config.router.cart}
-                        className={(nav) => cx('cart', { active: nav.isActive })}
+                    <div
+                        // to={config.router.cart}
+                        className={cx('cart')}
                     >
-                        <ShoppingCartOutlined />
+                        <span className={cx('cart-icon')}>
+                            <ShoppingCartOutlined />
+                        </span>
                         <span
                             className={cx('cart-quantity')}
                             style={{ borderColor: !showHeader ? '#B1B2B4' : 'var(--header-color)' }}
                         >
                             3
                         </span>
-                    </NavLink>
+                    </div>
                 </Tippy>
             </div>
         </div>

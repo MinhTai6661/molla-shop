@@ -55,7 +55,6 @@ function Button({
         Object.keys(props).forEach((key) => {
             if (typeof props[key] === 'function' && key.startsWith('on')) {
                 delete props[key];
-                console.log(key);
             }
         });
     }

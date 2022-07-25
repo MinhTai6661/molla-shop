@@ -1,34 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
+import { deviceModeSlelector } from '~/redux/selector';
 import tempData from '~/tempData';
 import styles from './Brand.module.scss';
 import './Brand.scss';
 const cx = classNames.bind(styles);
 
 function Brand() {
-    const [screenWidth, setScreenWidth] = useState(1024);
-    console.log('Brand ~ screenWidth', screenWidth);
-    useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.addEventListener('resize', handleResize);
-        };
-    });
-
+    const { size } = useSelector(deviceModeSlelector);
+    console.log('Brand ~ screenSize', size);
     const slidesToShow = () => {
-        if (screenWidth < 768) {
-            return 3;
+        if (size === 'xl') {
+            return 7;
         }
-        if (screenWidth >= 768 && screenWidth < 992) {
+        if (size === 'lg') {
+            return 6;
+        }
+        if (size === 'md') {
+            return 5;
+        }
+        if (size === 'sm') {
             return 4;
         }
 
-        return 7;
+        return 3;
     };
     const settings = {
         dots: false,

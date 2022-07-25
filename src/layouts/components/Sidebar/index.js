@@ -7,22 +7,19 @@ import MenuList from '../MenuList';
 import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { sidebarShowSlector } from '~/redux/selector';
-import { toggleShow } from '~/redux/sidebarShowSlice';
+import { toggleShowSidebar } from '~/redux/showSlice';
 
 const cx = classNames.bind(style);
 function Sidebar() {
     const isShow = useSelector(sidebarShowSlector);
     const dispatch = useDispatch();
-    console.log('Sidebar ~ isShow', isShow);
-
     const handleClose = () => {
-        console.log('hehe');
-        dispatch(toggleShow());
+        dispatch(toggleShowSidebar());
     };
     return (
-        <div className={cx('sidebar', { isShow })}>
-            <div className={cx('overlay')}></div>
-            <div className={cx('menu')}>
+        <div className={cx('wrapper', { isShow })}>
+            <div className={cx('overlay')} onClick={handleClose}></div>
+            <div className={cx('sidebar')}>
                 <div className={cx('header')}>
                     <span className={cx('close')} onClick={handleClose}>
                         <CloseOutlined />

@@ -1,6 +1,7 @@
 import Brand from './components/Brand';
 import CategoriesBaner from './components/CategoriesBaner';
 import HomeBanner from './components/HomeBanner';
+import TrendyProducts from './components/TrendyProducts';
 
 function HomePage() {
     return (
@@ -8,7 +9,7 @@ function HomePage() {
             <HomeBanner />
             <Brand />
             <CategoriesBaner />
-            {/* categories */}
+            <TrendyProducts />
         </div>
     );
 }
