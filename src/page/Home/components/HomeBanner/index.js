@@ -1,11 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import BannerItem from '../BannerItem';
 import Slider from 'react-slick';
 import tempData from '~/tempData';
-
-import 'slick-carousel/slick/slick.css';
+import BannerItem from '../BannerItem';
 import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import './customSlider.scss';
+
+function NextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: 'none', background: 'red', right: '100px' }}
+            onClick={onClick}
+        />
+    );
+}
+
+function PrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: 'none', background: 'green' }}
+            onClick={onClick}
+        />
+    );
+}
 function HomeBanner(props) {
     const settings = {
         dots: true,
@@ -16,10 +36,12 @@ function HomeBanner(props) {
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: 'linear',
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
 
     return (
-        <div>
+        <div className="home-banner">
             <Slider {...settings}>
                 {tempData.banners.map((banner) => (
                     <div key={banner.title}>

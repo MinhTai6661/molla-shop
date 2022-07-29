@@ -21,20 +21,21 @@ function MenuList({ vertical, className }) {
                     Home
                 </NavLink>
             </li>
+
+            <li className={cx('menu-item')}>
+                <NavLink
+                    className={(nav) => cx('menu-link', { active: nav.isActive })}
+                    to={config.router.product}
+                >
+                    Products
+                </NavLink>
+            </li>
             <li className={cx('menu-item')}>
                 <NavLink
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.contact}
                 >
                     contact
-                </NavLink>
-            </li>
-            <li className={cx('menu-item')}>
-                <NavLink
-                    className={(nav) => cx('menu-link', { active: nav.isActive })}
-                    to={config.router.product}
-                >
-                    Product
                 </NavLink>
             </li>
             <li className={cx('menu-item')}>

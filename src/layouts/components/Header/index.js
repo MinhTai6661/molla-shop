@@ -26,20 +26,18 @@ function Header() {
     const screenSize = useSelector(deviceModeSlelector);
     const isShowHeader = useSelector(headerShowSlector);
     return (
-        <div className={cx('header', { 'show-color': isShowHeader })}>
-            <Container xs={23} className={`${cx('container')}`}>
-                <div className={cx('inner')}>
-                    <div className={cx('left')}>
-                        <LeftHeader smallDeviceMode={screenSize.deviceMode === 'small'} />
-                    </div>
-                    <div className={cx('right')}>
-                        <RightHeader
-                            showHeader={isShowHeader}
-                            smallDeviceMode={screenSize.deviceMode === 'small'}
-                        />
-                    </div>
+        <div className={cx('wrapper', { 'show-color': isShowHeader })}>
+            <div className={cx('inner')}>
+                <div className={cx('left')}>
+                    <LeftHeader smallDeviceMode={screenSize.deviceMode === 'small'} />
                 </div>
-            </Container>
+                <div className={cx('right')}>
+                    <RightHeader
+                        showHeader={isShowHeader}
+                        smallDeviceMode={screenSize.deviceMode === 'small'}
+                    />
+                </div>
+            </div>
         </div>
     );
 }

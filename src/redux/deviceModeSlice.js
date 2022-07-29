@@ -27,7 +27,6 @@ const deviceModeSlice = createSlice({
             state.size = size;
         },
         changeDeviceMode: (state, action) => {
-            console.log('action', action);
             state.deviceMode = action.payload;
         },
     },

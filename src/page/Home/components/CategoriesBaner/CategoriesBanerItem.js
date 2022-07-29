@@ -10,21 +10,23 @@ import { ArrowRightOutlined } from '@ant-design/icons';
 const cx = classNames.bind(style);
 function CategoriesBanerItem({ title, img, subTitle, btnContent, vertical = false }) {
     return (
-        <Link
-            to={config.router.product}
-            className={cx('item', { vertical })}
-            style={{ backgroundImage: `url(${img})` }}
-        >
-            <div className={cx('inner')}>
-                <div to={config.router.product} className={cx('content')}>
-                    <h3 className={cx('subtitle')}>{subTitle}</h3>
-                    <h2 className={cx('title')}>{title}</h2>
-                    <span className={cx('btn')} to={config.router.product}>
-                        {btnContent} <ArrowRightOutlined />
-                    </span>
+        <div className={cx('item-wrapper')}>
+            <Link
+                to={config.router.product}
+                className={cx('item', { vertical })}
+                style={{ backgroundImage: `url(${img})` }}
+            >
+                <div className={cx('inner')}>
+                    <div to={config.router.product} className={cx('content')}>
+                        <h3 className={cx('subtitle')}>{subTitle}</h3>
+                        <h2 className={cx('title')}>{title}</h2>
+                        <span className={cx('btn')} to={config.router.product}>
+                            {btnContent} <ArrowRightOutlined />
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     );
 }
 

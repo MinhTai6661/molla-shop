@@ -30,8 +30,10 @@ function RightHeader({ showHeader, smallDeviceMode }) {
                 </NavLink>
 
                 <Tippy
-                    distance={40}
                     interactive={true}
+                    hideOnClick={true}
+                    offset={[12, 12]}
+                    placement="bottom-end"
                     render={(attrs) => (
                         <div {...attrs}>
                             <CartDropdown />

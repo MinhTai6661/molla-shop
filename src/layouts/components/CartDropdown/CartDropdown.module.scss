@@ -57,7 +57,7 @@ $paddingWrapper: calc(22px - $paddingItem) 0 22px 0;
     }
     .money {
         font-size: 1.4rem;
-        color: var(--text-color-primary);
+        color: var(--text-color-3);
     }
     .right__info {
         display: flex;
@@ -69,7 +69,7 @@ $paddingWrapper: calc(22px - $paddingItem) 0 22px 0;
 }
 
 .delete {
-    color: var(--text-color-primary);
+    color: var(--text-color-3);
     transition: 0.2s;
     padding: 10px 0 10px 10px;
     z-index: 99;

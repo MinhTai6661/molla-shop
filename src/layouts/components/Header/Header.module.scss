@@ -1,4 +1,4 @@
-.header {
+.wrapper {
     // background-color: var(--header-color);
     background-color: transparent;
     margin: auto;
@@ -9,6 +9,10 @@
     right: 0;
     z-index: 999;
     transition: background-color 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
 }
 .show-color {
     transition: background-color 0.5s;
@@ -17,6 +21,7 @@
 }
 
 .inner {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     .left {

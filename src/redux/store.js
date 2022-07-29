@@ -2,13 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import deviceModeReducer from './deviceModeSlice';
 import sidebarShowReducer from './showSlice';
 import productsReducer from './productsSlice';
-import categoriesReducer from './CategoriesSlice';
-
+import trendyProductReducer from '~/page/Home/components/TrendyProducts/trendyProdyctSlice';
 const rootReducer = {
     devicemode: deviceModeReducer,
     showHeaderSidebar: sidebarShowReducer,
     products: productsReducer,
-    categories: categoriesReducer,
+    trendyProduct: trendyProductReducer,
 };
 const store = configureStore({ reducer: rootReducer });
 

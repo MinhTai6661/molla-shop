@@ -11,31 +11,40 @@ const cx = classNames.bind(styles);
 
 function Brand() {
     const { size } = useSelector(deviceModeSlelector);
-    console.log('Brand ~ screenSize', size);
-    const slidesToShow = () => {
-        if (size === 'xl') {
-            return 7;
-        }
-        if (size === 'lg') {
-            return 6;
-        }
-        if (size === 'md') {
-            return 5;
-        }
-        if (size === 'sm') {
-            return 4;
-        }
 
-        return 3;
-    };
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: slidesToShow(),
+        slidesToShow: 7,
         slidesToScroll: 1,
         swipeToSlide: true,
-        // adaptiveHeight: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 6,
+                },
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 5,
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4,
+                },
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+        ],
     };
     return (
         <div className={cx('brand__wrapper')}>

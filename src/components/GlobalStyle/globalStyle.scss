@@ -9,7 +9,8 @@
 
     --text-color: #333;
     --header-color: #333;
-    --text-color-primary: #999;
+    --text-color-2: #777;
+    --text-color-3: #999;
     --border-color-sidebar: rgba(255, 255, 255, 0.1);
 
     //size
@@ -18,6 +19,7 @@
 }
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 }
 * {
     box-sizing: border-box;
@@ -27,6 +29,7 @@ body {
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
+    overflow-y: overlay;
 }
 @font-face {
     font-family: flamingregular;
@@ -40,22 +43,12 @@ html *::-webkit-scrollbar {
     border-radius: 0;
     width: 8px;
 }
-html *::-webkit-scrollbar {
-    border-radius: 0;
-    width: 8px;
-}
+
 html *::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.15);
 }
-html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.15);
-}
-html *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
-}
+
 html *::-webkit-scrollbar-track {
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0);
@@ -84,19 +77,31 @@ html *::-webkit-scrollbar-track {
     width: 20px !important;
     background-color: var(--primary-color) !important;
 }
-.slick-arrow {
-    background-color: red !important;
-    display: none !important;
-}
 
 //custom ant design
 .ant-row {
     height: 100% !important;
 }
 
-// .ant-col > * {
-//     position: relative;
-//     top: -13px;
+// .slick-prev {
+//     // left: 50px !important;
 // }
-@media (max-width: 769px) {
-}
+
+// .slick-next {
+//     // right: 50px !important;
+// }
+
+// .slick-next:before,
+// .slick-prev:before {
+//     content: '' !important;
+// }
+
+// .slick-arrow {
+//     z-index: 10;
+// }
+
+// .next-slick-arrow,
+// .prev-slick-arrow {
+//     color: #000000;
+//     font-size: 48px;
+// }

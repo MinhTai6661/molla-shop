@@ -1,13 +1,8 @@
-import { Col, Row } from 'antd';
-
-function Container({ children, className, ...size }) {
-    return (
-        <Row className={className}>
-            <Col style={{ margin: 'auto' }} {...size}>
-                {children}
-            </Col>
-        </Row>
-    );
+import classNames from 'classnames/bind';
+import styles from './Container.module.scss';
+const cx = classNames.bind(styles);
+function Container({ children }) {
+    return <div className={cx('container')}>{children}</div>;
 }
 
 export default Container;

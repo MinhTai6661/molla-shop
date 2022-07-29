@@ -6,7 +6,6 @@ $bannerHeight: 650px;
     width: 100%;
     margin: auto;
     display: block;
-
     border-radius: var(--round-main);
     // overflow: hidden;
     margin-top: 52px;
@@ -14,13 +13,20 @@ $bannerHeight: 650px;
 }
 
 //item
-
+.item-wrapper {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
 .item {
+    box-sizing: border-box;
+    // background-origin: content-box;
     width: 100%;
     height: 100%;
     background-position: 75%;
     background-size: cover;
     display: flex;
+
     .inner {
         position: absolute;
         top: 30px;
@@ -51,7 +57,7 @@ $bannerHeight: 650px;
         // line-height: 20px;
         .subtitle {
             font-size: 1.6rem;
-            color: var(--text-color-primary);
+            color: var(--text-color-3);
             font-weight: 400;
         }
         .title {

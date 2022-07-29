@@ -5,9 +5,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { changeDeviceMode, changeSize } from './redux/deviceModeSlice';
 import { handleShowHeader } from './redux/showSlice';
-import { fetchAllProducts } from './redux/productsSlice';
+import { fetchAllCaregories, fetchAllProducts } from './redux/productsSlice';
 import { productsSelector } from './redux/selector';
-import { fetchAllCaregories } from './redux/CategoriesSlice';
 
 function App() {
     const dispatch = useDispatch();
