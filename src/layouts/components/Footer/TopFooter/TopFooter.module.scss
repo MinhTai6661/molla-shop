@@ -1,0 +1,47 @@
+.wrapper {
+    font-weight: 300;
+    font-size: 1.4rem;
+    color: var(--text-color-3);
+}
+.left {
+    .logo {
+        margin-bottom: 20px;
+        display: block;
+        &-img {
+            width: 105px;
+            height: auto;
+        }
+    }
+    .contact {
+        margin-top: 20px;
+        span {
+            color: #000;
+        }
+        .phone-number {
+            color: #acc964;
+            font-size: 2rem;
+            font-weight: 400;
+        }
+    }
+}
+
+.right {
+    .widget {
+        text-transform: capitalize;
+        &__title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        &__list {
+            padding: 0;
+            list-style: none;
+        }
+        &__item {
+            margin: 10px 0;
+        }
+        &__link {
+            color: currentColor;
+        }
+    }
+}

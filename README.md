@@ -1,3 +1,3 @@
 fix bug:
 
--   đưa product theo category lên redux
+-   sửa responsive phần category và home contact
