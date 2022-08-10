@@ -5,4 +5,4 @@ export const sidebarShowSlector = (state) => state.showHeaderSidebar.isSidebarSh
 export const headerShowSlector = (state) => state.showHeaderSidebar.isHeaderShow;
 export const productsSelector = (state) => state.products;
 
-export const trendyProduct = createSelector(productsSelector);
+// export const trendyProduct = createSelector(productsSelector);

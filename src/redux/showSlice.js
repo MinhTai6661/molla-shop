@@ -4,7 +4,7 @@ const showSlice = createSlice({
     name: 'handleShow',
     initialState: {
         isSidebarShow: false,
-        isHeaderShow: false,
+        isHeaderShow: true,
     },
     reducers: {
         toggleShowSidebar: (state, action) => {

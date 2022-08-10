@@ -1,0 +1,19 @@
+.evaluate {
+    display: flex;
+    align-items: flex-end;
+    // justify-content: center;
+    // margin-top: 20px;
+    .rate {
+        line-height: 1.2rem;
+
+        &-icon {
+            font-size: 1.3rem;
+        }
+    }
+    .review {
+        margin-left: 10px;
+        color: #ccc;
+        font-size: 1.3rem;
+        line-height: 1.2rem;
+    }
+}

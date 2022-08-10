@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from 'react';
 import { get } from '~/utils/axiosRequest';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { fetchProductByCaregories } from '~/redux/productsSlice';
+import ProductsCarousel from '~/components/ProductsCarousel';
 const cx = classNames.bind(styles);
 
 function TrendyProducts() {
@@ -60,54 +61,7 @@ function TrendyProducts() {
                         ))}
                 </ul>
                 <div className={cx('product-list')}>
-                    <button
-                        className={cx('btn-prev')}
-                        onClick={() => {
-                            slider.current.slickPrev();
-                        }}
-                    >
-                        <LeftOutlined />
-                    </button>
-                    <Slider
-                        {...settings}
-                        ref={(c) => {
-                            slider.current = c;
-                        }}
-                    >
-                        {currentProducts.length
-                            ? currentProducts.map((item) => (
-                                  <div key={item.id}>
-                                      <ProductItem
-                                          category={item.category}
-                                          image={item.image}
-                                          price={item.price}
-                                          title={item.title}
-                                          rate={item.rating.rate}
-                                          countRate={item.rating.count}
-                                      />
-                                  </div>
-                              ))
-                            : allProducts.map((item) => (
-                                  <div key={item.id}>
-                                      <ProductItem
-                                          category={item.category}
-                                          image={item.image}
-                                          price={item.price}
-                                          title={item.title}
-                                          rate={item.rating.rate}
-                                          countRate={item.rating.count}
-                                      />
-                                  </div>
-                              ))}
-                    </Slider>
-                    <button
-                        className={cx('btn-next')}
-                        onClick={() => {
-                            slider.current.slickNext();
-                        }}
-                    >
-                        <RightOutlined />
-                    </button>
+                    <ProductsCarousel listProducts={currentProducts} />
                 </div>
             </div>
         </Container>

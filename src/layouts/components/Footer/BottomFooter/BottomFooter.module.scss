@@ -1,0 +1,52 @@
+.left {
+    font-size: 1.4rem;
+    font-weight: 400;
+    p {
+        margin: 0;
+    }
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
+    .label {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+}
+
+.list-icon {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+        a {
+            padding: 10px;
+            &.facebook {
+                color: #1097f4;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+            &.instagram {
+                color: #d12c70;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+            &.youtube {
+                color: #f20000;
+                &:hover {
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .right {
+        display: flex;
+        justify-content: center;
+    }
+}
