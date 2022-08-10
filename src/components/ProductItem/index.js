@@ -7,20 +7,26 @@ import config from '~/config';
 import Button from '../Button';
 import { EyeOutlined, HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
+import Evaluate from '../Evaluate';
+import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ title, price, category, image, oldPrice, rate, countRate }) {
+function ProductItem({ id, title, price, category, image, oldPrice, rate, countRate }) {
+    const navigate = useNavigate();
+    const handleClickItem = () => {
+        navigate(`/product/${id}`);
+    };
     return (
         <div className={cx('wrapper')}>
-            <Link to={config.router.product}>
+            <div className={cx('main')}>
                 <div className={cx('thumb')}>
-                    <img className={cx('img')} src={image} alt={title} />
+                    <img className={cx('img')} src={image} alt={title} onClick={handleClickItem} />
                     <Button leftIcon={<ShoppingCartOutlined />} className={cx('add')}>
                         ADD TO CART
                     </Button>
                 </div>
-                <div className={cx('info')}>
+                <div className={cx('info')} onClick={handleClickItem}>
                     <span className={cx('category')}>{category}</span>
                     <span className={cx('title')}>{title}</span>
                     <div className={cx('price')}>
@@ -29,13 +35,8 @@ function ProductItem({ title, price, category, image, oldPrice, rate, countRate 
                     </div>
                 </div>
 
-                <div className={cx('evaluate')}>
-                    <div className={cx('rate')}>
-                        <Rate className={cx('rate-icon')} allowHalf disabled defaultValue={rate} />
-                    </div>
-                    <div className={cx('review')}>({countRate} Review)</div>
-                </div>
-            </Link>
+                <Evaluate rate={rate} countRate={countRate} isDisabled />
+            </div>
 
             {/* <div className={cx('tags')}></div> */}
 

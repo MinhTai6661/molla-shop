@@ -2,6 +2,7 @@ import config from '~/config';
 import DefaultLayout from '~/layouts/DefaultLayout';
 import ContactPage from '~/page/Contact';
 import HomePage from '~/page/Home';
+import ProductDetail from '~/page/ProductDetail';
 const publicRoutes = [
     {
         path: config.router.home,
@@ -21,6 +22,11 @@ const publicRoutes = [
     {
         path: config.router.product,
         component: ContactPage,
+        layout: DefaultLayout,
+    },
+    {
+        path: config.router.productDetail,
+        component: ProductDetail,
         layout: DefaultLayout,
     },
     {

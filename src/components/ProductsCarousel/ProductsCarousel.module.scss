@@ -1,0 +1,25 @@
+.wrapper {
+    position: relative;
+}
+.btn-prev,
+.btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+    font-size: 3rem;
+    padding: 10px;
+    color: var(--text-color-2);
+    cursor: pointer;
+    &:hover {
+        color: var(--text-color);
+    }
+}
+.btn-prev {
+    left: -50px;
+}
+.btn-next {
+    right: -50px;
+}
