@@ -61,7 +61,12 @@ function TrendyProducts() {
                         ))}
                 </ul>
                 <div className={cx('product-list')}>
-                    <ProductsCarousel listProducts={currentProducts} />
+                    {currentProducts.length ? (
+                        <ProductsCarousel listProducts={currentProducts} />
+                    ) : (
+                        allProducts &&
+                        allProducts.length && <ProductsCarousel listProducts={allProducts} />
+                    )}
                 </div>
             </div>
         </Container>

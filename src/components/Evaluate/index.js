@@ -7,18 +7,16 @@ const cx = classNames.bind(styles);
 
 function Evaluate({ countRate, rate, isDisabled }) {
     return (
-        <div>
-            <div className={cx('evaluate')}>
-                <div className={cx('rate')}>
-                    <Rate
-                        className={cx('rate-icon')}
-                        allowHalf
-                        disabled={isDisabled}
-                        defaultValue={rate}
-                    />
-                </div>
-                <div className={cx('review')}>({countRate} Review)</div>
+        <div className={cx('evaluate')}>
+            <div className={cx('rate')}>
+                <Rate
+                    className={cx('rate-icon')}
+                    allowHalf
+                    disabled={isDisabled}
+                    defaultValue={rate}
+                />
             </div>
+            <div className={cx('review')}>({countRate})</div>
         </div>
     );
 }

@@ -1,0 +1,23 @@
+.collapse-content {
+    &__item {
+        color: var(--text-color-3);
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: 5px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__title {
+    }
+    &__count {
+        padding: 1px 5px;
+        background-color: rgba(240, 240, 240, 0.645);
+        border-radius: 5px;
+        min-width: 25px;
+        display: flex;
+        justify-content: center;
+        font-weight: 300;
+    }
+}

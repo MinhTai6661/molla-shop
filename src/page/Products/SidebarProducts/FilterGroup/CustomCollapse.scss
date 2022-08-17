@@ -1,0 +1,20 @@
+.sidebar__menu {
+    width: 100%;
+    .ant-collapse {
+        border: none;
+        background-color: var(--white-color);
+    }
+    .ant-collapse-header {
+        font-size: 1.6rem;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding-left: 0 !important;
+        .anticon {
+            margin-right: 7px !important;
+        }
+    }
+    .ant-collapse-content-box {
+        padding-left: 0;
+    }
+}

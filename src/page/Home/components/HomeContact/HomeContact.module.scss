@@ -88,7 +88,7 @@
         border-radius: 50rem;
         overflow: hidden;
         transition: all 0.2s ease;
-        padding-right: 72px;
+        padding: 0 72px 0 20px;
 
         &:focus {
             border-color: var(--primary-color);
@@ -114,5 +114,12 @@
             background-color: var(--primary-color);
             color: var(--white-color);
         }
+    }
+}
+
+@media (max-width: 769px) {
+    .social,
+    .deal {
+        margin: 0 0;
     }
 }

@@ -14,13 +14,16 @@ export default function ProductDetail() {
     const { allProducts } = useSelector(productsSelector);
     const { productId } = useParams();
 
-    const currentProduct = allProducts.find((item) => item.id == productId);
-    console.log('SuggestProducts ~ currentProduct', currentProduct);
+    const currentProduct = allProducts.find((item) => item.id === Number(productId));
 
     return (
         <Container>
-            <ProductDetailTop currentProduct={currentProduct} />
-            <SuggestProducts currentProduct={currentProduct} />
+            {currentProduct && (
+                <>
+                    <ProductDetailTop currentProduct={currentProduct} />
+                    <SuggestProducts currentProduct={currentProduct} />
+                </>
+            )}
         </Container>
     );
 }

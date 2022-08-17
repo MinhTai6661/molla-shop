@@ -28,10 +28,7 @@ function Header() {
 
     useEffect(() => {
         if (currentRouter === '/') {
-            console.log('handleEvent ~ currentRouter', currentRouter);
             dispatch(window.scrollY > 100 ? handleShowHeader(true) : handleShowHeader(false));
-
-            console.log('hello');
         } else {
             dispatch(handleShowHeader(true));
         }
