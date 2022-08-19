@@ -1,48 +1,58 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Collapse, Menu, Slider } from 'antd';
 import './CustomCollapse.scss';
 import styles from './FilterGroup.module.scss';
 import classNames from 'classnames/bind';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentCatSelector, productsSelector } from '~/redux/selector';
+import PriceRange from './PriceRange';
+import { current } from '@reduxjs/toolkit';
+import { changeCat } from '../../listProductsSlice';
 
 const cx = classNames.bind(styles);
 const { Panel } = Collapse;
 
 function MenuDropDown(props) {
+    const dispatch = useDispatch();
+    const currentCategory = useSelector(currentCatSelector);
+    const { allCategries } = useSelector(productsSelector);
+
+    const [currentCollapses, setCurrentCollapses] = useState([]);
+    console.log('MenuDropDown ~ currentCollapses', currentCollapses);
+
     const onChangeCollapse = (key) => {
         console.log(key);
+        setCurrentCollapses(key);
     };
 
-    const onSliderChange = (value) => {
-        console.log('onChange: ', value);
+    const handleClickCategoryItem = (category) => {
+        console.log('handleClickCategoryItem ~ category', category);
+        dispatch(changeCat(category));
     };
 
-    const onAfterSliderChange = (value) => {
-        console.log('onAfterChange: ', value);
-    };
     return (
         <div className="sidebar__menu">
-            <Collapse bordered={false} defaultActiveKey={['1']} onChange={onChangeCollapse}>
+            <Collapse bordered={false} defaultActiveKey={['1', '2']} onChange={onChangeCollapse}>
                 <Panel header="Category" key="1">
-                    <div className={cx('collapse-content__item')}>
-                        <span className={cx('collapse-content__title')}>Furniture</span>{' '}
-                        <span className={cx('collapse-content__count')}>5</span>
-                    </div>
-                    <div className={cx('collapse-content__item')}>
-                        <span className={cx('collapse-content__title')}>Electronics</span>{' '}
-                        <span className={cx('collapse-content__count')}>10</span>
-                    </div>
+                    {allCategries &&
+                        allCategries.length &&
+                        allCategries.map((item) => (
+                            <div
+                                className={cx('collapse-content__item', {
+                                    active: currentCategory === item,
+                                })}
+                                key={item}
+                                onClick={() => handleClickCategoryItem(item)}
+                            >
+                                <span className={cx('collapse-content__title')}>{item}</span>{' '}
+                                <span className={cx('collapse-content__count')}>5</span>{' '}
+                                {/* sua sau */}
+                            </div>
+                        ))}
                 </Panel>
                 <Panel header="This is panel header 2" key="2">
-                    <Slider
-                        tooltipPlacement="bottom"
-                        tooltipVisible
-                        range
-                        step={10}
-                        defaultValue={[20, 50]}
-                        onChange={onSliderChange}
-                        onAfterChange={onAfterSliderChange}
-                    />
+                    <PriceRange currentCollapses={currentCollapses} />
                 </Panel>
             </Collapse>
         </div>

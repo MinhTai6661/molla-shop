@@ -34,6 +34,9 @@ $height-line: 2px;
         width: 0;
         transition: 0.2s;
     }
+    &:hover {
+        color: var(--primary-color);
+    }
     &.active::after {
         left: 0;
         width: 100%;

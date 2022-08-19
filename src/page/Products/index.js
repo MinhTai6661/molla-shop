@@ -6,6 +6,8 @@ import { Col, Row } from 'antd';
 import { Grid, Tag } from 'antd';
 import SidebarProducts from './SidebarProducts';
 import MainProducts from './MainProducts';
+import { currentCatSelector } from '~/redux/selector';
+import { useSelector } from 'react-redux';
 const { useBreakpoint } = Grid;
 
 const cx = classNames.bind(styles);

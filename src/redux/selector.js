@@ -5,4 +5,7 @@ export const sidebarShowSlector = (state) => state.showHeaderSidebar.isSidebarSh
 export const headerShowSlector = (state) => state.showHeaderSidebar.isHeaderShow;
 export const productsSelector = (state) => state.products;
 
-// export const trendyProduct = createSelector(productsSelector);
+export const currentCatSelector = (state) => state.listProducts.currentCategory;
+export const currentPriceRangeSlector = (state) => state.listProducts.currentPriceRange;
+export const defaultPriceRangeSlector = (state) => state.listProducts.defaultPriceRange;
+export const listProductsSlice = createSelector(productsSelector);
