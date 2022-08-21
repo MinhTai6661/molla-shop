@@ -12,15 +12,15 @@ function CategoriesBanerItem({ title, img, subTitle, btnContent, vertical = fals
     return (
         <div className={cx('item-wrapper')}>
             <Link
-                to={config.router.product}
+                to={config.router.products}
                 className={cx('item', { vertical })}
                 style={{ backgroundImage: `url(${img})` }}
             >
                 <div className={cx('inner')}>
-                    <div to={config.router.product} className={cx('content')}>
+                    <div to={config.router.products} className={cx('content')}>
                         <h3 className={cx('subtitle')}>{subTitle}</h3>
                         <h2 className={cx('title')}>{title}</h2>
-                        <span className={cx('btn')} to={config.router.product}>
+                        <span className={cx('btn')} to={config.router.products}>
                             {btnContent} <ArrowRightOutlined />
                         </span>
                     </div>

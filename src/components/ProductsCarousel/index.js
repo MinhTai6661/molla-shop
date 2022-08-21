@@ -11,10 +11,7 @@ const cx = classNames.bind(styles);
 function ProductsCarousel({ listProducts }) {
     const slider = useRef();
     const [showArrow, setShowArrow] = useState(false);
-    console.log('ProductsCarousel ~ showArrow', showArrow);
     useEffect(() => {
-        // console.log('settings().slidesToShow', listProducts.length);
-
         if (listProducts.length >= settings().slidesToShow) {
             setShowArrow(true);
         } else {
@@ -70,7 +67,7 @@ function ProductsCarousel({ listProducts }) {
 }
 
 ProductsCarousel.propTypes = {
-    listProduct: PropTypes.array.isRequired,
+    listProduct: PropTypes.array,
 };
 
 export default ProductsCarousel;

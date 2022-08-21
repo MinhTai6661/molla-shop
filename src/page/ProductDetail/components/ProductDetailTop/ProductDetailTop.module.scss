@@ -126,6 +126,7 @@
             border-radius: 100rem;
             margin-left: 10px;
             transition: 0.2s;
+            cursor: pointer;
             &:hover {
                 border-color: var(--primary-color);
             }
