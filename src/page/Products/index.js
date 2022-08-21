@@ -27,9 +27,10 @@ export default function Products() {
             <Container>
                 <div className={cx('content')}>
                     <Row gutter={[20, 0]}>
-                        <Col xs={0} sm={0} lg={6}>
+                        <Col xs={6} sm={6} lg={6}>
                             <SidebarProducts />
                         </Col>
+
                         <Col xs={24} sm={24} lg={18}>
                             <MainProducts />
                         </Col>

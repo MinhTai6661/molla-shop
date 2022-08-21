@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import Container from '~/components/Container';
 import ProductItem from '~/components/ProductItem';
-import { productsSelector } from '~/redux/selector';
+import { allProductsSelector, allCategriesSelector } from '~/redux/selector';
 import styles from './TrendyProducts.module.scss';
 import settings from './settings';
 import { useEffect, useRef, useState } from 'react';
@@ -15,7 +15,8 @@ const cx = classNames.bind(styles);
 
 function TrendyProducts() {
     const slider = useRef();
-    const { allProducts, allCategries } = useSelector(productsSelector);
+    const allProducts = useSelector(allProductsSelector);
+    const allCategries = useSelector(allCategriesSelector);
     const [currentCat, setCurrentCat] = useState('all');
     const [currentProducts, setCurrentProducts] = useState([]);
 

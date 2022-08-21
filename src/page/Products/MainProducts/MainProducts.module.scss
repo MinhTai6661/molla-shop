@@ -12,7 +12,11 @@
             color: var(--text-color);
         }
     }
+    .sortGroup {
+        display: flex;
+    }
     .sort {
+        margin-left: 20px;
         display: flex;
         align-items: center;
         .select {
@@ -23,4 +27,13 @@
 .list {
     margin-top: 20px;
     padding-left: 0;
+}
+
+@media (max-width: 767px) {
+    .top {
+        flex-direction: column-reverse;
+    }
+    .sortGroup {
+        margin-bottom: 20px;
+    }
 }
