@@ -17,7 +17,7 @@ function RightHeader({ showHeader, smallDeviceMode }) {
                 {!smallDeviceMode && (
                     <div className={cx('search')}>
                         <input className={cx('search-input')} placeholder="Search product..." />
-                        <Link to={config.router.products} className={cx('search-icon')}>
+                        <Link to={config.router.product} className={cx('search-icon')}>
                             <SearchOutlined />
                         </Link>
                     </div>

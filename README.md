@@ -1,5 +1,4 @@
-Những việc cần làm và fix bug:
+fix bug:
 
 -   sửa responsive phần category và home contact
--   sửa phần star
--   thêm breadcumb
+-   sửa caorousel bị lỗi khi truyền mảng nhỏ hơn 4 (đặt file setting là 1 hàm return về object rôiif truyền length vào)

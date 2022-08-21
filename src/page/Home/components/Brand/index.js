@@ -3,14 +3,14 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import { deviceModeSelector } from '~/redux/selector';
+import { deviceModeSlelector } from '~/redux/selector';
 import tempData from '~/tempData';
 import styles from './Brand.module.scss';
 import './Brand.scss';
 const cx = classNames.bind(styles);
 
 function Brand() {
-    const { size } = useSelector(deviceModeSelector);
+    const { size } = useSelector(deviceModeSlelector);
 
     const settings = {
         dots: false,

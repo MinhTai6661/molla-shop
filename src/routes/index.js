@@ -3,7 +3,6 @@ import DefaultLayout from '~/layouts/DefaultLayout';
 import ContactPage from '~/page/Contact';
 import HomePage from '~/page/Home';
 import ProductDetail from '~/page/ProductDetail';
-import Products from '~/page/Products';
 const publicRoutes = [
     {
         path: config.router.home,
@@ -21,8 +20,8 @@ const publicRoutes = [
         layout: DefaultLayout,
     },
     {
-        path: config.router.products,
-        component: Products,
+        path: config.router.product,
+        component: ContactPage,
         layout: DefaultLayout,
     },
     {
