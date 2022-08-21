@@ -6,12 +6,12 @@ import SearchField from '~/components/Search';
 import MenuList from '../MenuList';
 import { CloseOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { sidebarShowSlector } from '~/redux/selector';
+import { sidebarShowSelector } from '~/redux/selector';
 import { toggleShowSidebar } from '~/redux/showSlice';
 
 const cx = classNames.bind(style);
 function Sidebar() {
-    const isShow = useSelector(sidebarShowSlector);
+    const isShow = useSelector(sidebarShowSelector);
     const dispatch = useDispatch();
     const handleClose = () => {
         dispatch(toggleShowSidebar());

@@ -1,0 +1,12 @@
+.products__main-products {
+    .products__order-by {
+        min-width: 165px;
+    }
+    .ant-pagination-disabled .ant-pagination-item-link {
+        cursor: default !important;
+    }
+    .ant-pagination {
+        display: flex;
+        justify-content: center;
+    }
+}

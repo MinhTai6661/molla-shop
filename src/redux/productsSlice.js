@@ -17,29 +17,30 @@ const productsSlice = createSlice({
             })
             .addCase(fetchAllCaregories.fulfilled, (state, action) => {
                 state.allCategries = action.payload;
-            })
-            .addCase(fetchProductByCaregories.fulfilled, (state, action) => {
-                if (!!action.payload.category) {
-                    const isExist = state.productsByCategory.some(
-                        (item) => item?.category === action.payload.category,
-                    );
-
-                    if (!isExist) {
-                        state.productsByCategory.push({
-                            category: action.payload.category,
-                            products: action.payload.res,
-                        });
-                    }
-                    return;
-                }
             });
+        // .addCase(fetchProductByCaregories.fulfilled, (state, action) => {
+        //     if (!!action.payload.category) {
+        //         const isExist = state.productsByCategory.some(
+        //             (item) => item?.category === action.payload.category,
+        //         );
+
+        //         if (!isExist) {
+        //             state.productsByCategory.push({
+        //                 category: action.payload.category,
+        //                 products: action.payload.res,
+        //             });
+        //         }
+        //         return;
+        //     }
+        // });
     },
 });
 
 export const fetchAllProducts = createAsyncThunk('products/fetchAllProducts', async () => {
     const res = await request.get('products');
+    const newRes = res.filter((item) => item.category !== 'electronics');
 
-    return res;
+    return newRes;
 });
 export const fetchAllCaregories = createAsyncThunk('categories/fetchAllCategories', async () => {
     const res = await request.get('products/categories');

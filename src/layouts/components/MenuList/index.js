@@ -25,7 +25,7 @@ function MenuList({ vertical, className }) {
             <li className={cx('menu-item')}>
                 <NavLink
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
-                    to={config.router.product}
+                    to={config.router.products}
                 >
                     Products
                 </NavLink>

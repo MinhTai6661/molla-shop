@@ -10,7 +10,7 @@ import { productsSelector } from './redux/selector';
 
 function App() {
     const dispatch = useDispatch();
-    const products = useSelector(productsSelector);
+
     useEffect(() => {
         dispatch(fetchAllProducts());
         dispatch(fetchAllCaregories());

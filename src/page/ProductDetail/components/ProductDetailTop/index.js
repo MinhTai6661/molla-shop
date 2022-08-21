@@ -2,7 +2,7 @@ import React from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './ProductDetailTop.module.scss';
-import { Col, Divider, Row } from 'antd';
+import { Col, Divider, Rate, Row } from 'antd';
 import { FullscreenOutlined } from '@ant-design/icons';
 import Evaluate from '~/components/Evaluate';
 import Button from '~/components/Button';
@@ -14,11 +14,10 @@ import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 
 export default function ProductDetailTop({ currentProduct }) {
-    console.log('rating', currentProduct?.rating?.rate);
     return (
         <Container>
             <div className={cx('wrapper')}>
-                <Row>
+                <Row gutter={[{ md: 48 }]}>
                     <Col xs={24} md={12}>
                         <div className={cx('thumb')}>
                             <img src={currentProduct?.image} alt={currentProduct?.title} />
@@ -32,12 +31,12 @@ export default function ProductDetailTop({ currentProduct }) {
                             <h3 className={cx('title')}>{currentProduct?.title}</h3>
                             <div className={cx('rate')}>
                                 <Evaluate
-                                    rate={currentProduct?.rating?.rate || 5} // will fix it in the future
+                                    rate={currentProduct?.rating?.rate} // will fix it in the future
                                     countRate={currentProduct?.rating.count}
                                     isDisabled
                                 />
                             </div>
-                            <span className={cx('price')}>$200</span>
+                            <span className={cx('price')}>${currentProduct?.price}</span>
                             <p className={cx('description')}>{currentProduct?.description}</p>
                             <div className={cx('quantity')}>
                                 <span>Qty:</span>
