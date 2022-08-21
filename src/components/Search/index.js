@@ -15,7 +15,7 @@ function SearchField({ className, normal }) {
         <div className={className}>
             <div className={cx('search', { normal })}>
                 <input className={cx('search-input')} placeholder="Search product..." />
-                <Link to={config.router.products} className={cx('search-icon')}>
+                <Link to={config.router.product} className={cx('search-icon')}>
                     <SearchOutlined />
                 </Link>
             </div>

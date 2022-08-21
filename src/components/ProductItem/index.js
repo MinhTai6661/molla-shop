@@ -35,10 +35,7 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
                     </div>
                 </div>
 
-                <div className={cx('evaluate')}>
-                    {' '}
-                    <Evaluate rate={rate} countRate={countRate} isDisabled />
-                </div>
+                <Evaluate rate={rate} countRate={countRate} isDisabled />
             </div>
 
             {/* <div className={cx('tags')}></div> */}
