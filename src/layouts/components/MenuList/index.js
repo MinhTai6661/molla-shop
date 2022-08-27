@@ -1,20 +1,23 @@
 import className from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import config from '~/config';
+import { hindSidebar, toggleShowSidebar } from '~/redux/showSlice';
 import style from './MenuList.module.scss';
 const cx = className.bind(style);
 
 function MenuList({ vertical, className }) {
+    const dispatch = useDispatch();
+    const handleClickMenuItem = () => {
+        dispatch(hindSidebar());
+        window.scrollTo(0, 0);
+    };
     return (
-        // <div className={cx('navbar', { verical })}>
-        //     <div className={cx('menu-header')}>
-        //         <span>X</span>
-        //         <SearchField normal />
-        //     </div>
         <ul className={`${cx('menu-list', { vertical })} ${[className]}`}>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.home}
                 >
@@ -24,6 +27,7 @@ function MenuList({ vertical, className }) {
 
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.products}
                 >
@@ -32,6 +36,7 @@ function MenuList({ vertical, className }) {
             </li>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.contact}
                 >
@@ -40,6 +45,7 @@ function MenuList({ vertical, className }) {
             </li>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.aboutUs}
                 >

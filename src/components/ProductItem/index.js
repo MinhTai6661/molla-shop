@@ -6,23 +6,52 @@ import { Link } from 'react-router-dom';
 import config from '~/config';
 import Button from '../Button';
 import { EyeOutlined, HeartOutlined, ShoppingCartOutlined } from '@ant-design/icons';
-import { Rate } from 'antd';
+import { message, Rate } from 'antd';
 import Evaluate from '../Evaluate';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '~/page/Cart/cartSlice';
 
 const cx = classNames.bind(styles);
 
 function ProductItem({ id, title, price, category, image, oldPrice, rate, countRate }) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleClickItem = () => {
         navigate(`/product/${id}`);
+        window.scrollTo(0, 0);
+    };
+    const handleAddProduct = (product) => {
+        dispatch(addToCart({ ...product, quantity: 1 }));
+        message.success({
+            content: `Add \"${product.title}\" successfuly !`,
+            className: 'custom-class',
+            style: {
+                textTransform: 'capitalize',
+            },
+        });
     };
     return (
         <div className={cx('wrapper')}>
             <div className={cx('main')}>
                 <div className={cx('thumb')}>
                     <img className={cx('img')} src={image} alt={title} onClick={handleClickItem} />
-                    <Button leftIcon={<ShoppingCartOutlined />} className={cx('add')}>
+                    <Button
+                        leftIcon={<ShoppingCartOutlined />}
+                        className={cx('add')}
+                        onClick={() =>
+                            handleAddProduct({
+                                id,
+                                title,
+                                price,
+                                category,
+                                image,
+                                oldPrice,
+                                rate,
+                                countRate,
+                            })
+                        }
+                    >
                         ADD TO CART
                     </Button>
                 </div>

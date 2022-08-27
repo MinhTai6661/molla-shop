@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Container from '~/components/Container';
 import PropTypes from 'prop-types';
+import QuantityProduct from '~/components/QuantityProduct';
 
 const cx = classNames.bind(styles);
 
@@ -39,20 +40,7 @@ export default function ProductDetailTop({ currentProduct }) {
                             <span className={cx('price')}>${currentProduct?.price}</span>
                             <p className={cx('description')}>{currentProduct?.description}</p>
                             <div className={cx('quantity')}>
-                                <span>Qty:</span>
-                                <div className={cx('input-group')}>
-                                    <button className={cx('input-group__prepend')}>-</button>
-                                    <input
-                                        type="number"
-                                        min={1}
-                                        max={100}
-                                        value={1}
-                                        onChange={() => {
-                                            console.log('input number change');
-                                        }}
-                                    />
-                                    <button className={cx('input-group__append')}>+</button>
-                                </div>
+                                <QuantityProduct min={1} />
                             </div>
                             <div className={cx('btn-group')}>
                                 <Button primary outline>

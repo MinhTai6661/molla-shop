@@ -4,6 +4,7 @@ import sidebarShowReducer from './showSlice';
 import productsReducer from './productsSlice';
 import trendyProductReducer from '~/page/Home/components/TrendyProducts/trendyProdyctSlice';
 import listProductsReducer from '~/page/Products/listProductsSlice';
+import cartReducer from '~/page/Cart/cartSlice';
 
 const rootReducer = {
     devicemode: deviceModeReducer,
@@ -11,6 +12,7 @@ const rootReducer = {
     products: productsReducer,
     trendyProduct: trendyProductReducer,
     listProducts: listProductsReducer,
+    cart: cartReducer,
 };
 const store = configureStore({ reducer: rootReducer });
 

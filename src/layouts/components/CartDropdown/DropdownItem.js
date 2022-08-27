@@ -6,26 +6,25 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import config from '~/config';
 import { CloseOutlined } from '@ant-design/icons';
+import formatter from '~/config/format';
 const cx = className.bind(style);
 
-function DropdownItem(props) {
+function DropdownItem({ product }) {
     return (
         <li className={cx('item')}>
             <Link to={config.router.cart} className={cx('link')}>
                 <div className={cx('info')}>
-                    <h3 className={cx('title')}>giày name bitis </h3>
+                    <h3 className={cx('title')}>{product.title} </h3>
                     <div className={cx('money')}>
-                        <span className={cx('money__quantity')}>3</span>
-                        <span className={cx('money__price')}> $100</span>
+                        <span className={cx('money__quantity')}>{product.quantity}</span> x{' '}
+                        <span className={cx('money__price')}>
+                            {formatter.format(product.price)}
+                        </span>
                     </div>
                 </div>
                 <div className={cx('right__info')}>
                     <div>
-                        <img
-                            className={cx('thumb__img')}
-                            src="https://d-themes.com/react_asset_api/molla/uploads/product_4_1_b1a40364bb.jpg"
-                            alt="thumb"
-                        />
+                        <img className={cx('thumb__img')} src={product.image} alt="thumb" />
                     </div>
                 </div>
             </Link>
@@ -36,6 +35,8 @@ function DropdownItem(props) {
     );
 }
 
-DropdownItem.propTypes = {};
+DropdownItem.propTypes = {
+    product: PropTypes.object,
+};
 
 export default DropdownItem;

@@ -106,3 +106,15 @@ html *::-webkit-scrollbar-track {
 //     color: #000000;
 //     font-size: 48px;
 // }
+.ant-radio-group {
+    width: 100%;
+    .ant-space {
+        width: 100%;
+        .ant-radio-wrapper {
+            width: 100%;
+            & > span:last-child {
+                width: 100%;
+            }
+        }
+    }
+}

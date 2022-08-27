@@ -14,6 +14,7 @@ function PriceRange({ currentCollapses }) {
     const defaultPriceRange = useSelector(defaultPriceRangeSelector);
     const onSliderChange = (value) => {
         // console.log('onChange: ', value);
+        dispatch(changePriceRange(value));
     };
 
     const onAfterSliderChange = (value) => {
@@ -23,7 +24,6 @@ function PriceRange({ currentCollapses }) {
         const maxRange = defaultPriceRange[1];
 
         const ojb = {};
-        let step = maxRange / 4 / 2;
 
         for (let i = 0; i < 4; i++) {
             ojb[i * (maxRange / 4)] = `$${i * (maxRange / 4)}`;
@@ -49,8 +49,9 @@ function PriceRange({ currentCollapses }) {
                     min={0}
                     max={defaultPriceRange[1]}
                     defaultValue={defaultPriceRange}
+                    value={currentPriceRange}
                     onChange={onSliderChange}
-                    onAfterChange={onAfterSliderChange}
+                    // onAfterChange={onAfterSliderChange}
                     getTooltipPopupContainer={(triggerNode) => triggerNode}
                 />
             </div>

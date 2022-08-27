@@ -1,0 +1,22 @@
+.wrapper {
+    background-image: url('https://d-themes.com/react/molla/demo-5/images/page-header-bg.jpg');
+    width: 100%;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .content {
+        text-transform: capitalize;
+        h1 {
+            margin-bottom: 0px;
+            font-size: 50px;
+            font-weight: 400;
+            letter-spacing: 10px;
+            line-height: 60px;
+        }
+        h2 {
+            color: var(--primary-color);
+        }
+    }
+}

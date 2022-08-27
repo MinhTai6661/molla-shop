@@ -1,5 +1,6 @@
 import config from '~/config';
 import DefaultLayout from '~/layouts/DefaultLayout';
+import CartPage from '~/page/Cart';
 import ContactPage from '~/page/Contact';
 import HomePage from '~/page/Home';
 import ProductDetail from '~/page/ProductDetail';
@@ -37,7 +38,7 @@ const publicRoutes = [
     },
     {
         path: config.router.cart,
-        component: ContactPage,
+        component: CartPage,
         layout: DefaultLayout,
     },
 ];
