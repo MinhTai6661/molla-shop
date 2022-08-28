@@ -1,7 +1,9 @@
 .wrapper {
     color: var(--text-color-3);
+    display: inline-block;
 
     .input-group {
+        min-width: 100px;
         display: inline-block;
         position: relative;
         width: 100%;

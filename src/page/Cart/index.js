@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Banner from '~/components/Banner';
 import styles from './Cart.module.scss';
@@ -12,6 +12,10 @@ const cx = classNames.bind(styles);
 export default function CartPage() {
     const cart = useSelector((state) => state.cart);
     console.log('CartPage ~ cart', cart);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <Banner title="cart" />

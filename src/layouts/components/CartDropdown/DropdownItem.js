@@ -7,9 +7,16 @@ import { Link } from 'react-router-dom';
 import config from '~/config';
 import { CloseOutlined } from '@ant-design/icons';
 import formatter from '~/config/format';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '~/page/Cart/cartSlice';
 const cx = className.bind(style);
 
 function DropdownItem({ product }) {
+    const dispatch = useDispatch();
+
+    const handleRemoveFromCart = (id) => {
+        dispatch(removeFromCart(id));
+    };
     return (
         <li className={cx('item')}>
             <Link to={config.router.cart} className={cx('link')}>
@@ -28,7 +35,7 @@ function DropdownItem({ product }) {
                     </div>
                 </div>
             </Link>
-            <span className={cx('delete')}>
+            <span className={cx('delete')} onClick={() => handleRemoveFromCart(product.id)}>
                 <CloseOutlined />
             </span>
         </li>

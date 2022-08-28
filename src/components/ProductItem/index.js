@@ -23,13 +23,18 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
     };
     const handleAddProduct = (product) => {
         dispatch(addToCart({ ...product, quantity: 1 }));
-        message.success({
-            content: `Add \"${product.title}\" successfuly !`,
-            className: 'custom-class',
-            style: {
-                textTransform: 'capitalize',
-            },
-        });
+        // message.success({
+        //     content: `Add \"${product.title}\" successfuly !`,
+        //     className: 'custom-class',
+        //     style: {
+        //         textTransform: 'capitalize',
+        //     },
+        // });
+        // message.config({
+        //     top: 100,
+        //     duration: 1,
+        //     maxCount: 1,
+        // });
     };
     return (
         <div className={cx('wrapper')}>

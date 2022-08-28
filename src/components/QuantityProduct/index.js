@@ -6,13 +6,25 @@ import Tippy from '@tippyjs/react/headless';
 
 const cx = classNames.bind(styles);
 
-function QuantityProduct({ defaultValue = 1, onChange, max = 999, min = 0, size }) {
+function QuantityProduct({
+    defaultValue = 1,
+    value = defaultValue,
+    onChange,
+    max = 999,
+    min = 0,
+    size,
+    className,
+}) {
     const [valueInput, setValueInput] = useState(min || defaultValue);
     const prevValue = useRef(valueInput);
     const [errorMessage, setErrorMessage] = useState('');
     useEffect(() => {
         if (onChange) onChange(valueInput);
     }, [valueInput]);
+    useEffect(() => {
+        setValueInput(+value);
+        console.log('RETURN 0', typeof value);
+    }, [value]);
 
     const handleChange = (mode) => {
         if (mode === 'decrease') {
@@ -50,7 +62,7 @@ function QuantityProduct({ defaultValue = 1, onChange, max = 999, min = 0, size 
         }
     };
     return (
-        <div className={cx('wrapper', { [size]: true })}>
+        <div className={cx('wrapper', { [size]: true, [className]: !!className })}>
             <Tippy
                 render={(attrs) => (
                     <div className={cx('error-message')} tabIndex="-1" {...attrs}>
@@ -87,6 +99,7 @@ function QuantityProduct({ defaultValue = 1, onChange, max = 999, min = 0, size 
 
 QuantityProduct.propTypes = {
     onChange: PropTypes.func,
+    value: PropTypes.number,
     defaultValue: PropTypes.number,
     max: PropTypes.number,
     min: PropTypes.number,
