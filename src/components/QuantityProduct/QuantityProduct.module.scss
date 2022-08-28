@@ -1,0 +1,58 @@
+.wrapper {
+    color: var(--text-color-3);
+    display: inline-block;
+
+    .input-group {
+        min-width: 100px;
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        max-width: 130px;
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number']::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+        input {
+            outline: none;
+            width: 100%;
+            text-align: center;
+            border: 1px solid var(--text-color-3);
+            padding: 5px 20px;
+        }
+        &__prepend,
+        &__append {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 5px;
+        }
+        &__prepend {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: 0;
+        }
+        &__append {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top: 0;
+        }
+    }
+
+    &.medium {
+        .input-group {
+            max-width: 100px;
+        }
+    }
+}
+
+.error-message {
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    padding: 0px 10px;
+    color: var(--white-color);
+}

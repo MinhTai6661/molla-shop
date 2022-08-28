@@ -75,14 +75,15 @@ $distanceElement: 15px;
         position: absolute;
         font-size: 1.2rem;
         background-color: var(--secondary-color);
-        width: 16px;
-        height: 16px;
+        top: 0px;
+        left: 30px;
+        padding: 0 5px;
+        min-width: 20px;
+        height: 20px;
         border-radius: 100rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 0px;
-        right: -5px;
         border: 2px solid;
     }
 }

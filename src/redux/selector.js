@@ -6,6 +6,13 @@ export const headerShowSelector = (state) => state.showHeaderSidebar.isHeaderSho
 export const allCategriesSelector = (state) => state.products.allCategries;
 export const allProductsSelector = (state) => state.products.allProducts;
 
+//cart
+
+export const cartProductsSelector = (state) => state.cart.products;
+export const cartShippingPriceSelector = (state) => state.cart.shippingPrice;
+export const cartTotalProductsSelector = createSelector(cartProductsSelector, (products) =>
+    products.reduce((acc, curr) => acc + curr.quantity, 0),
+);
 //listProductsSlice
 export const currentCatSelector = (state) => state.listProducts.currentCategory;
 export const currentPriceRangeSelector = (state) => state.listProducts.currentPriceRange;

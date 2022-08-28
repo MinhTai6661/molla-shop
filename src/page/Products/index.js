@@ -8,6 +8,7 @@ import SidebarProducts from './SidebarProducts';
 import MainProducts from './MainProducts';
 import { currentCatSelector } from '~/redux/selector';
 import { useSelector } from 'react-redux';
+import Banner from '~/components/Banner';
 const { useBreakpoint } = Grid;
 
 const cx = classNames.bind(styles);
@@ -17,12 +18,7 @@ export default function Products() {
     console.log('Products ~ screens', screens);
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('banner')}>
-                <div className={cx('banner__content')}>
-                    <h1>Products</h1>
-                    <h2>Molla shop</h2>
-                </div>
-            </div>
+            <Banner title="Products" />
 
             <Container>
                 <div className={cx('content')}>

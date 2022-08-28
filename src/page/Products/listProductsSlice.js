@@ -4,8 +4,8 @@ import { get } from '~/utils/axiosRequest';
 
 const listProductsSlice = createSlice({
     initialState: {
-        defaultPriceRange: [0, 1000], //not handle
-        currentPriceRange: [0, 1000],
+        defaultPriceRange: [0, 800], //not handle
+        currentPriceRange: [0, 800],
         currentCategory: 'all',
         sortType: 'default',
         orderType: 'default',
@@ -32,6 +32,7 @@ const listProductsSlice = createSlice({
             state.currentCategory = 'all';
             state.sortType = 'default';
             state.orderType = 'default';
+            state.currentPriceRange = state.defaultPriceRange;
         },
         changeCurrentPage: (state, action) => {
             state.currentPage = action.payload;

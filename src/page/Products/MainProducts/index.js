@@ -33,8 +33,8 @@ export default function MainProducts() {
     };
 
     const handleChangePage = (pageNumber) => {
-        console.log('Page: ', pageNumber);
         dispatch(changeCurrentPage(pageNumber));
+        window.scrollTo(0, 0);
     };
 
     return (

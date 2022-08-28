@@ -11,9 +11,8 @@ function DefaultLayout({ children }) {
     return (
         <div className="default-layout">
             <Header />
-
             <Sidebar />
-            {children}
+            <div className="main-content">{children}</div>
             <Footer />
         </div>
     );

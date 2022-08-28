@@ -1,34 +1,29 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Collapse, Menu, Slider } from 'antd';
-import './CustomCollapse.scss';
-import styles from './FilterGroup.module.scss';
+import { Collapse } from 'antd';
 import classNames from 'classnames/bind';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    currentCatSelector,
     allCategriesSelector,
-    allProductsSelector,
-    filteredProductsSelector,
+    currentCatSelector,
     filteredProductsNotCatSelector,
+    filteredProductsSelector,
 } from '~/redux/selector';
-import PriceRange from './PriceRange';
-import { current } from '@reduxjs/toolkit';
 import {
     changeCategory,
     changeCurrentPage,
     fetchProductsByCategory,
 } from '../../listProductsSlice';
-import { type } from '@testing-library/user-event/dist/type';
-import { get } from '~/utils/axiosRequest';
+import './CustomCollapse.scss';
+import styles from './FilterGroup.module.scss';
+import PriceRange from './PriceRange';
 
 const cx = classNames.bind(styles);
 const { Panel } = Collapse;
 
-function MenuDropDown(props) {
+function MenuDropDown({ setShowSidebar }) {
     const dispatch = useDispatch();
     const currentCategory = useSelector(currentCatSelector);
-    const filteredProducts = useSelector(filteredProductsSelector);
+
     const filteredProductsNotCat = useSelector(filteredProductsNotCatSelector);
     const allCategries = useSelector(allCategriesSelector);
     const [currentCollapses, setCurrentCollapses] = useState([]);
@@ -52,6 +47,8 @@ function MenuDropDown(props) {
 
     useEffect(() => {
         dispatch(fetchProductsByCategory(currentCategory));
+        setShowSidebar(false);
+        window.scrollTo(0, 0);
     }, [currentCategory]);
 
     const handleChangeCategoryItem = (category) => {

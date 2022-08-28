@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './ProductDetailTop.module.scss';
-import { Col, Divider, Rate, Row } from 'antd';
+import { Col, Divider, message, Rate, Row } from 'antd';
 import { FullscreenOutlined } from '@ant-design/icons';
 import Evaluate from '~/components/Evaluate';
 import Button from '~/components/Button';
@@ -10,10 +10,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import Container from '~/components/Container';
 import PropTypes from 'prop-types';
+import QuantityProduct from '~/components/QuantityProduct';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '~/page/Cart/cartSlice';
 
 const cx = classNames.bind(styles);
 
 export default function ProductDetailTop({ currentProduct }) {
+    const dispatch = useDispatch();
+    const [quantity, setQuantity] = useState(1);
+
+    const handleChangeQuantity = (value) => {
+        setQuantity(value);
+    };
+    const handleAddToCart = () => {
+        dispatch(addToCart({ ...currentProduct, quantity: quantity }));
+        setQuantity(1);
+        // message.success({
+        //     content: `Add ${quantity} \"${currentProduct.title}\" successfuly !`,
+        //     className: 'custom-class',
+        //     style: {
+        //         textTransform: 'capitalize',
+        //     },
+        // });
+        // message.config({
+        //     top: 100,
+        //     duration: 1,
+        //     maxCount: 1,
+        // });
+    };
     return (
         <Container>
             <div className={cx('wrapper')}>
@@ -39,23 +64,14 @@ export default function ProductDetailTop({ currentProduct }) {
                             <span className={cx('price')}>${currentProduct?.price}</span>
                             <p className={cx('description')}>{currentProduct?.description}</p>
                             <div className={cx('quantity')}>
-                                <span>Qty:</span>
-                                <div className={cx('input-group')}>
-                                    <button className={cx('input-group__prepend')}>-</button>
-                                    <input
-                                        type="number"
-                                        min={1}
-                                        max={100}
-                                        value={1}
-                                        onChange={() => {
-                                            console.log('input number change');
-                                        }}
-                                    />
-                                    <button className={cx('input-group__append')}>+</button>
-                                </div>
+                                <QuantityProduct
+                                    value={quantity}
+                                    min={1}
+                                    onChange={(value) => handleChangeQuantity(value)}
+                                />
                             </div>
                             <div className={cx('btn-group')}>
-                                <Button primary outline>
+                                <Button primary outline onClick={handleAddToCart}>
                                     ADD TO CART
                                 </Button>
                                 <Button primary fill>

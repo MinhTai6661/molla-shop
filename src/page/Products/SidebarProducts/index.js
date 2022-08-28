@@ -12,7 +12,9 @@ export default function SidebarProducts() {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const handeClearAll = () => {
+        setShow(false);
         dispatch(clearAll());
+        window.scrollTo(0, 0);
     };
     return (
         <div className={cx('wrapper', { show })}>
@@ -26,7 +28,7 @@ export default function SidebarProducts() {
                 </div>
 
                 <div className={cx('filter__list')}>
-                    <MenuDropDown />
+                    <MenuDropDown setShowSidebar={setShow} />
                 </div>
                 <button
                     className={cx('toggle')}
