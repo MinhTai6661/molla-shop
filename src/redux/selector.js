@@ -32,9 +32,7 @@ export const filteredProductsSelector = createSelector(
 
         if (orderType !== 'default') {
             if (orderType === 'lowest') {
-                console.log(currentListProducts);
                 arrCopied.sort((a, b) => a.price - b.price);
-                console.log('arrCopied', arrCopied);
             } else {
                 arrCopied.sort((a, b) => b.price - a.price);
             }
@@ -64,9 +62,7 @@ export const filteredProductsNotCatSelector = createSelector(
 
         if (orderType !== 'default') {
             if (orderType === 'lowest') {
-                console.log(currentListProducts);
                 arrCopied.sort((a, b) => a.price - b.price);
-                console.log('arrCopied', arrCopied);
             } else {
                 arrCopied.sort((a, b) => b.price - a.price);
             }

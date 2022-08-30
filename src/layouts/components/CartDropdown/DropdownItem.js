@@ -1,18 +1,20 @@
 import className from 'classnames/bind';
 import style from './CartDropdown.module.scss';
 
-import React from 'react';
+import { CloseOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import config from '~/config';
-import { CloseOutlined } from '@ant-design/icons';
 import formatter from '~/config/format';
-import { useDispatch } from 'react-redux';
 import { removeFromCart } from '~/page/Cart/cartSlice';
+import { cartProductsSelector } from '~/redux/selector';
 const cx = className.bind(style);
 
 function DropdownItem({ product }) {
     const dispatch = useDispatch();
+
+    const allProductsCart = useSelector(cartProductsSelector);
 
     const handleRemoveFromCart = (id) => {
         dispatch(removeFromCart(id));

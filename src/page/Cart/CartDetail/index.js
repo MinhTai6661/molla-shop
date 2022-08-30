@@ -15,18 +15,14 @@ const cx = classNames.bind(styles);
 
 function CartDetail(props) {
     const screens = useBreakpoint();
-    console.log('CartDetail ~ screens', screens);
 
     const dispatch = useDispatch();
     const cartList = useSelector((state) => state.cart.products);
-    console.log('CartDetail ~ cartList', cartList);
 
     const handleChangeQuantity = (quantity, id) => {
         dispatch(changeQuantity({ quantity, id }));
     };
-    const handleDeleteProduct = (id) => {
-        dispatch(removeFromCart(id));
-    };
+
     const handleConfirm = (id) => {
         message.info('remove successful!');
         dispatch(removeFromCart(id));
@@ -67,6 +63,7 @@ function CartDetail(props) {
                                         </td>
                                         <td>
                                             <QuantityProduct
+                                                min={1}
                                                 className={cx('detail__quantity')}
                                                 defaultValue={product?.quantity || 1}
                                                 size="medium"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
@@ -8,28 +8,35 @@ import Button from '~/components/Button';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeShippingPrice } from '../cartSlice';
+import { cartProductsSelector } from '~/redux/selector';
+import formatter from '~/config/format';
 
 const cx = classNames.bind(styles);
 
 function CartCheckout(props) {
     const dispatch = useDispatch();
-    // const [radioValue, setRadioValue] = useState(0);
+    const allProductsCart = useSelector(cartProductsSelector);
     const radioValue = useSelector((state) => state.cart.shippingPrice);
     const handleChangeRadioValue = (e) => {
-        // setRadioValue(e.target.value);
         dispatch(changeShippingPrice(e.target.value));
     };
 
-    const handleClickCheckout = () => {
-        // console.log(radioValue);
-        // dispatch(changeShippingPrice(radioValue));
-    };
+    const handleClickCheckout = () => {};
+
+    const subTotal = useMemo(() => {
+        return allProductsCart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+    }, [allProductsCart]);
+
+    const total = useMemo(() => {
+        return subTotal + radioValue;
+    }, [allProductsCart, radioValue]);
+
     return (
         <div className={cx('checkout')}>
             <h3 className={cx('checkout__title')}> cart total</h3>
             <div className={cx('subtotal')}>
                 <h4>subtotal</h4>
-                <span className={cx('subtotal-price')}> $1.040.614,99</span>
+                <span className={cx('subtotal-price')}> {formatter.format(subTotal)}</span>
             </div>
 
             <div className={cx('shipping')}>
@@ -56,6 +63,10 @@ function CartCheckout(props) {
                         </Radio>
                     </Space>
                 </Radio.Group>
+            </div>
+            <div className={cx('total')}>
+                <span>Total:</span>
+                <span> {formatter.format(total)}</span>
             </div>
 
             <Button

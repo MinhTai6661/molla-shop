@@ -54,6 +54,14 @@ $paddingWrapper: calc(22px - $paddingItem) 0 22px 0;
         font-size: 1.4rem;
         color: var(--text-color);
         text-transform: capitalize;
+        display: -webkit-box;
+        // max-width: 400px;
+        line-height: 2rem;
+        height: 60px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .money {
         font-size: 1.4rem;
@@ -102,5 +110,18 @@ $paddingWrapper: calc(22px - $paddingItem) 0 22px 0;
     span {
         font-weight: 400 !important;
         font-size: 1.3rem;
+    }
+}
+
+.empty {
+    img {
+        width: 100%;
+    }
+    h3 {
+        padding: $paddingItem;
+        font-size: 1.6rem;
+        text-align: center;
+        color: var(--text-color-2);
+        text-transform: capitalize;
     }
 }

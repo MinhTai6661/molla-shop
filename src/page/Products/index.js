@@ -15,7 +15,6 @@ const cx = classNames.bind(styles);
 
 export default function Products() {
     const screens = useBreakpoint();
-    console.log('Products ~ screens', screens);
     return (
         <div className={cx('wrapper')}>
             <Banner title="Products" />
