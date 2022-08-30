@@ -11,7 +11,6 @@ const cx = classNames.bind(styles);
 
 export default function CartPage() {
     const cart = useSelector((state) => state.cart);
-    console.log('CartPage ~ cart', cart);
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

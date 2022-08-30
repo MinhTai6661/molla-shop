@@ -38,20 +38,38 @@ const cartSlice = createSlice({
 
             const index = state.products.findIndex(checkExist);
             if (isExist) {
-                state.products[index].quantity += action.payload.quantity;
+                if (state.products[index].quantity + action.payload.quantity <= 999) {
+                    state.products[index].quantity += action.payload.quantity;
+                    message.success({
+                        content: `Add ${action.payload.quantity} \"${action.payload.title}\" successfuly!`,
+                        className: 'custom-class',
+                        style: {
+                            textTransform: 'capitalize',
+                        },
+                    });
+                } else {
+                    message.warning({
+                        content: `\"${action.payload.title}\" successfuly! have to less than or equal 999 products`,
+                        className: 'custom-class',
+                        style: {
+                            textTransform: 'capitalize',
+                        },
+                    });
+                }
             } else {
                 state.products.push(action.payload);
+                message.success({
+                    content: `Add ${action.payload.quantity} \"${action.payload.title}\" successfuly!`,
+                    className: 'custom-class',
+                    style: {
+                        textTransform: 'capitalize',
+                    },
+                });
             }
-            message.success({
-                content: `Add ${action.payload.quantity} \"${action.payload.title}\" successfuly!`,
-                className: 'custom-class',
-                style: {
-                    textTransform: 'capitalize',
-                },
-            });
+
             message.config({
                 // top: 100,
-                duration: 1,
+                duration: 2,
                 maxCount: 1,
             });
         },
@@ -64,7 +82,6 @@ const cartSlice = createSlice({
             state.products[index].quantity = action.payload.quantity;
         },
         changeShippingPrice: (state, action) => {
-            console.log('hello: ', action.payload);
             state.shippingPrice = action.payload;
         },
     },

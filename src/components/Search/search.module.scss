@@ -6,6 +6,7 @@
     justify-content: space-between;
     margin: auto;
     height: 36px;
+    width: 100%;
 
     &.normal {
         border: none;
@@ -49,6 +50,14 @@
         }
     }
     &-icon {
+        color: #fff;
         font-size: 2rem;
     }
+}
+
+.suggest-products {
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 0;
 }

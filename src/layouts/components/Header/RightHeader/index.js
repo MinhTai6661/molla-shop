@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import className from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import SearchField from '~/components/Search';
 import config from '~/config';
 import { cartTotalProductsSelector } from '~/redux/selector';
 import CartDropdown from '../../CartDropdown';
@@ -14,16 +15,12 @@ const { Search } = Input;
 const cx = className.bind(style);
 function RightHeader({ showHeader, smallDeviceMode }) {
     const totalQuantity = useSelector(cartTotalProductsSelector);
-    console.log('CartDropdown ~ totalQuantity', totalQuantity);
     return (
         <div className={cx('wrapper')}>
             <div className={cx('right-header')}>
                 {!smallDeviceMode && (
                     <div className={cx('search')}>
-                        <input className={cx('search-input')} placeholder="Search product..." />
-                        <Link to={config.router.products} className={cx('search-icon')}>
-                            <SearchOutlined />
-                        </Link>
+                        <SearchField />
                     </div>
                 )}
                 <NavLink
@@ -52,7 +49,7 @@ function RightHeader({ showHeader, smallDeviceMode }) {
                             className={cx('cart-quantity')}
                             style={{ borderColor: !showHeader ? '#B1B2B4' : 'var(--header-color)' }}
                         >
-                            {totalQuantity}
+                            {totalQuantity <= 99 ? totalQuantity : '99+'}
                         </span>
                     </Link>
                 </Tippy>

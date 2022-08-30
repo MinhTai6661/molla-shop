@@ -23,7 +23,6 @@ function QuantityProduct({
     }, [valueInput]);
     useEffect(() => {
         setValueInput(+value);
-        console.log('RETURN 0', typeof value);
     }, [value]);
 
     const handleChange = (mode) => {
@@ -31,14 +30,14 @@ function QuantityProduct({
             if (valueInput > min) {
                 setValueInput(valueInput - 1);
             } else {
-                setErrorMessage(`price have to bettween ${min} and ${max}`);
+                setErrorMessage(`this value have to bettween ${min} and ${max}`);
             }
             return;
         }
         if (valueInput < max) {
             setValueInput(valueInput + 1);
         } else {
-            setErrorMessage(`price have to bettween ${min} and ${max}`);
+            setErrorMessage(`this value have to bettween ${min} and ${max}`);
         }
     };
 

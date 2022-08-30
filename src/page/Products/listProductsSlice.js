@@ -27,7 +27,6 @@ const listProductsSlice = createSlice({
             state.orderType = action.payload;
         },
         clearAll: (state, action) => {
-            console.log('clear');
             state.currentCategory = state.defaultPriceRange;
             state.currentCategory = 'all';
             state.sortType = 'default';
@@ -57,7 +56,6 @@ export const fetchProductsByCategory = createAsyncThunk(
             return newRes;
         } else {
             const res = await get(`products/category/${category}`);
-            console.log('fetchProductsByCategory ~ res', res);
             return res;
         }
     },

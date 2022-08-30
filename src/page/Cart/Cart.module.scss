@@ -65,6 +65,8 @@
         }
     }
     .checkout {
+        position: sticky;
+        top: var(--header-height);
         padding: 20px;
         background-color: #f9f9f9;
         border: 1px dashed #999;
@@ -100,6 +102,17 @@
                 &__price {
                     color: var(--primary-color);
                 }
+            }
+        }
+        .total {
+            display: flex;
+            color: var(--primary-color);
+            font-weight: 600;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            &-label {
+            }
+            &-price {
             }
         }
     }

@@ -7,11 +7,12 @@ import { useState } from 'react';
 
 function DefaultLayout({ children }) {
     const screenSize = useSelector(deviceModeSelector);
+    console.log('DefaultLayout ~ screenSize', screenSize);
 
     return (
         <div className="default-layout">
             <Header />
-            <Sidebar />
+            {screenSize.deviceMode === 'small' && <Sidebar />}
             <div className="main-content">{children}</div>
             <Footer />
         </div>
