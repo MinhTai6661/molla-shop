@@ -3,9 +3,10 @@ import { Input } from 'antd';
 import className from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import config from '~/config';
 import { allProductsSelector } from '~/redux/selector';
+import { hindSidebar } from '~/redux/showSlice';
 import Dropdown from '../Dropdown';
 import style from './search.module.scss';
 
@@ -13,6 +14,7 @@ const { Search } = Input;
 
 const cx = className.bind(style);
 function SearchField({ className, normal }) {
+    const navigate = useNavigate();
     const allProducts = useSelector(allProductsSelector);
     const dispatch = useDispatch();
     const [showDropdown, setShowDropdown] = useState(false);
@@ -44,14 +46,26 @@ function SearchField({ className, normal }) {
     const handleHideResult = () => {
         setShowDropdown(false);
     };
+    const handleReload = () => {
+        setValueInput('');
+    };
+
+    const handleClickItem = (id) => {
+        navigate(`/product/${id}`);
+        setValueInput('');
+        dispatch(hindSidebar());
+    };
 
     return (
-        <Dropdown visible={showDropdown} data={result} onClickOutside={handleHideResult}>
+        <Dropdown
+            visible={showDropdown}
+            data={result}
+            onClickOutside={handleHideResult}
+            onReload={handleReload}
+            onClickItem={handleClickItem}
+        >
             <div className={cx('search', { normal })}>
                 <input
-                    // onFocus={(e) => {
-                    //     console.log(e);
-                    // }}
                     className={cx('search-input')}
                     placeholder="Search product..."
                     onChange={handleChangeInput}

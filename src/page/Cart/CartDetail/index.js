@@ -29,79 +29,75 @@ function CartDetail(props) {
     };
     return (
         <div className={cx('detail')}>
-            {cartList && cartList.length > 0 ? (
-                !screens.xs ? (
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>product</th>
-                                <th>price</th>
-                                <th>quantity</th>
-                                <th>total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cartList &&
-                                cartList.length &&
-                                cartList.map((product) => (
-                                    <tr key={product.id}>
-                                        <td style={{ width: '40%' }}>
-                                            <div className={cx('detail__info')}>
-                                                <div className={cx('detail__thumb')}>
-                                                    <img src={product?.image} alt="product name" />
-                                                </div>
-                                                <h4 className={cx('detail__title')}>
-                                                    {product?.title}
-                                                </h4>
+            {!screens.xs ? (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product</th>
+                            <th>price</th>
+                            <th>quantity</th>
+                            <th>total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cartList &&
+                            cartList.length &&
+                            cartList.map((product) => (
+                                <tr key={product.id}>
+                                    <td style={{ width: '40%' }}>
+                                        <div className={cx('detail__info')}>
+                                            <div className={cx('detail__thumb')}>
+                                                <img src={product?.image} alt="product name" />
                                             </div>
-                                        </td>
-                                        <td>
-                                            <span className={cx('detail__price')}>
-                                                {formatter.format(product?.price)}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <QuantityProduct
-                                                min={1}
-                                                className={cx('detail__quantity')}
-                                                defaultValue={product?.quantity || 1}
-                                                size="medium"
-                                                onChange={(value) =>
-                                                    handleChangeQuantity(value, product.id)
-                                                }
-                                            />
-                                        </td>
-                                        <td>
-                                            <span className={cx('detail__total')}>
-                                                {formatter.format(product.price * product.quantity)}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <Popconfirm
-                                                className={cx('detail__delete')}
-                                                placement="right"
-                                                title="Do you want to remove this product from cart ?"
-                                                onConfirm={() => handleConfirm(product.id)}
-                                                okText="Yes"
-                                                cancelText="No"
-                                            >
-                                                <CloseOutlined />
-                                            </Popconfirm>
-                                        </td>
-                                    </tr>
-                                ))}
-                        </tbody>
-                    </table>
-                ) : (
-                    <CartDetailMobile
-                        cartList={cartList}
-                        handleChangeQuantity={handleChangeQuantity}
-                        handleConfirm={handleConfirm}
-                    />
-                )
+                                            <h4 className={cx('detail__title')}>
+                                                {product?.title}
+                                            </h4>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span className={cx('detail__price')}>
+                                            {formatter.format(product?.price)}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <QuantityProduct
+                                            min={1}
+                                            className={cx('detail__quantity')}
+                                            defaultValue={product?.quantity || 1}
+                                            size="medium"
+                                            onChange={(value) =>
+                                                handleChangeQuantity(value, product.id)
+                                            }
+                                        />
+                                    </td>
+                                    <td>
+                                        <span className={cx('detail__total')}>
+                                            {formatter.format(product.price * product.quantity)}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <Popconfirm
+                                            className={cx('detail__delete')}
+                                            placement="right"
+                                            title="Do you want to remove this product from cart ?"
+                                            onConfirm={() => handleConfirm(product.id)}
+                                            okText="Yes"
+                                            cancelText="No"
+                                        >
+                                            <CloseOutlined />
+                                        </Popconfirm>
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
             ) : (
-                <h3>not have any products</h3>
+                <CartDetailMobile
+                    cartList={cartList}
+                    handleChangeQuantity={handleChangeQuantity}
+                    handleConfirm={handleConfirm}
+                />
             )}
         </div>
     );
