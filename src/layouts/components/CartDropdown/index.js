@@ -14,7 +14,7 @@ import formatter from '~/config/format';
 import images from '~/assets/images';
 
 const cx = className.bind(style);
-function CartDropdown(props) {
+function CartDropdown() {
     const cartProducts = useSelector(cartProductsSelector);
 
     const subTotal = useMemo(() => {

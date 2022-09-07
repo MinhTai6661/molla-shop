@@ -6,6 +6,7 @@ const listProductsSlice = createSlice({
     initialState: {
         defaultPriceRange: [0, 800], //not handle
         currentPriceRange: [0, 800],
+
         currentCategory: 'all',
         sortType: 'default',
         orderType: 'default',
@@ -26,6 +27,7 @@ const listProductsSlice = createSlice({
         changeOrderType: (state, action) => {
             state.orderType = action.payload;
         },
+
         clearAll: (state, action) => {
             state.currentCategory = state.defaultPriceRange;
             state.currentCategory = 'all';

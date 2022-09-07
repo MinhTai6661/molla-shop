@@ -6,18 +6,21 @@ import settings from './settings';
 import classNames from 'classnames/bind';
 import styles from './ProductsCarousel.module.scss';
 import ProductItem from '../ProductItem';
+import { Grid } from 'antd';
 
 const cx = classNames.bind(styles);
+const { useBreakpoint } = Grid;
 function ProductsCarousel({ listProducts }) {
+    const screens = useBreakpoint();
     const slider = useRef();
     const [showArrow, setShowArrow] = useState(false);
     useEffect(() => {
-        if (listProducts.length >= settings().slidesToShow) {
+        if (listProducts.length > settings().slidesToShow && !screens.xs) {
             setShowArrow(true);
         } else {
             setShowArrow(false);
         }
-    }, [listProducts.length]);
+    }, [listProducts.length, screens]);
     return (
         <div className={cx('wrapper')}>
             {showArrow && (

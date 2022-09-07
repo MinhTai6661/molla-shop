@@ -32,7 +32,7 @@ function RightHeader({ showHeader, smallDeviceMode }) {
 
                 <Tippy
                     interactive={true}
-                    hideOnClick={true}
+                    hideOnClick
                     offset={[12, 12]}
                     placement="bottom-end"
                     render={(attrs) => (

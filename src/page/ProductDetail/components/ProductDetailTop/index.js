@@ -70,8 +70,13 @@ export default function ProductDetailTop({ currentProduct }) {
                                     onChange={(value) => handleChangeQuantity(value)}
                                 />
                             </div>
-                            <div className={cx('btn-group')}>
-                                <Button primary outline onClick={handleAddToCart}>
+                            <div>
+                                <Button
+                                    className={cx('btn-add')}
+                                    primary
+                                    outline
+                                    onClick={handleAddToCart}
+                                >
                                     ADD TO CART
                                 </Button>
                                 <Button primary fill>

@@ -116,6 +116,17 @@
             }
         }
     }
+    .cart-empty {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        svg {
+            width: 100%;
+            height: 500px;
+        }
+    }
 }
 
 .detail__mobile {
