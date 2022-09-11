@@ -78,13 +78,13 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
             {/* <div className={cx('tags')}></div> */}
 
             <div className={cx('btn-group')}>
-                <Link to={config.router.checkout} className={cx('wishlist')}>
+                <Link to={config.router.products} className={cx('wishlist')}>
                     <label>add to wishlist</label>
                     <span>
                         <HeartOutlined />
                     </span>
                 </Link>
-                <Link to={config.router.checkout} className={cx('quick-view')}>
+                <Link to={config.router.products} className={cx('quick-view')}>
                     <EyeOutlined />
                 </Link>
             </div>

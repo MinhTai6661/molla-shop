@@ -1,12 +1,11 @@
-import GlobalStyle from './components/GlobalStyle';
-import { Route, Routes } from 'react-router-dom';
-import publicRoutes from './routes';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { Route, Routes } from 'react-router-dom';
+import GlobalStyle from './components/GlobalStyle';
+import { fetchAllProductsFix } from './page/Products/listProductsSlice';
 import { changeDeviceMode, changeSize } from './redux/deviceModeSlice';
-import { handleShowHeader } from './redux/showSlice';
 import { fetchAllCaregories, fetchAllProducts } from './redux/productsSlice';
-import { productsSelector } from './redux/selector';
+import publicRoutes from './routes';
 
 function App() {
     const dispatch = useDispatch();
@@ -14,6 +13,7 @@ function App() {
     useEffect(() => {
         dispatch(fetchAllProducts());
         dispatch(fetchAllCaregories());
+        dispatch(fetchAllProductsFix());
     }, []);
 
     useEffect(() => {

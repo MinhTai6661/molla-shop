@@ -7,28 +7,37 @@ const listProductsSlice = createSlice({
         defaultPriceRange: [0, 800], //not handle
         currentPriceRange: [0, 800],
 
+        searchText: '',
         currentCategory: 'all',
         sortType: 'default',
         orderType: 'default',
         currentListProducts: [],
         currentPage: 1,
+
+        allProducts: [], // to referent, dont touch
     },
     name: 'listProducts',
     reducers: {
         changeCategory: (state, action) => {
             state.currentCategory = action.payload;
+            state.searchText = '';
         },
         changePriceRange: (state, action) => {
             state.currentPriceRange = action.payload;
+            state.searchText = '';
         },
         changeSortType: (state, action) => {
             state.sortType = action.payload;
+            state.searchText = '';
         },
         changeOrderType: (state, action) => {
             state.orderType = action.payload;
+            state.searchText = '';
         },
 
         clearAll: (state, action) => {
+            state.searchText = '';
+
             state.currentCategory = state.defaultPriceRange;
             state.currentCategory = 'all';
             state.sortType = 'default';
@@ -38,14 +47,41 @@ const listProductsSlice = createSlice({
         changeCurrentPage: (state, action) => {
             state.currentPage = action.payload;
         },
+        changeSearchText: (state, action) => {
+            state.searchText = action.payload;
+            const currentList = state.allProducts.filter((product) =>
+                product.title.trim().toLowerCase().includes(action.payload),
+            );
+            console.log('currentList', currentList);
+
+            state.currentListProducts = currentList;
+        },
+        changeCurrentList: (state, action) => {
+            const currentList = state.allProducts.filter((product) =>
+                product.title.trim().toLowerCase().includes(action.payload),
+            );
+
+            state.currentListProducts = currentList;
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProductsByCategory.pending, (state, action) => {})
             .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
                 state.currentListProducts = action.payload;
+            })
+            .addCase(fetchAllProductsFix.fulfilled, (state, action) => {
+                // phát sinh do chưa tối ưu code từ ban đầu
+                state.allProducts = action.payload;
             });
     },
+});
+
+export const fetchAllProductsFix = createAsyncThunk('listProducts/fetchAllProducts', async () => {
+    const res = await get(`products`);
+    const newRes = res.filter((item) => item.category !== 'electronics');
+
+    return newRes;
 });
 
 export const fetchProductsByCategory = createAsyncThunk(
@@ -71,5 +107,7 @@ export const {
     changeOrderType,
     clearAll,
     changeCurrentPage,
+    changeSearchText,
+    changeCurrentList,
 } = actions;
 export default reducer;
