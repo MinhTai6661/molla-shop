@@ -14,7 +14,6 @@ export default function SidebarProducts() {
     const handeClearAll = () => {
         setShow(false);
         dispatch(clearAll());
-        window.scrollTo(0, 0);
     };
     return (
         <div className={cx('wrapper', { show })}>

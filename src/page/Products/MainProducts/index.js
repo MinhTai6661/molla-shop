@@ -1,15 +1,22 @@
 import { Col, Pagination, Row, Select } from 'antd';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductItem from '~/components/ProductItem';
 import {
+    currentListProductsSelector,
     currentPageSelector,
     filteredProductsSelector,
     orderTypeSelector,
+    searchTextSelector,
     sortTypeSelector,
 } from '~/redux/selector';
-import { changeCurrentPage, changeOrderType, changeSortType } from '../listProductsSlice';
+import {
+    changeCurrentList,
+    changeCurrentPage,
+    changeOrderType,
+    changeSortType,
+} from '../listProductsSlice';
 import './custom.scss';
 import styles from './MainProducts.module.scss';
 
@@ -19,11 +26,14 @@ const cx = classNames.bind(styles);
 export default function MainProducts() {
     const dispatch = useDispatch();
     const filteredProducts = useSelector(filteredProductsSelector);
+    const currentList = useSelector(currentListProductsSelector);
+    const searchText = useSelector(searchTextSelector);
     const sortType = useSelector(sortTypeSelector);
     const orderType = useSelector(orderTypeSelector);
     const currentPage = useSelector(currentPageSelector);
 
     const [productsPerPage, setProductsPerPage] = useState(9);
+    const currentQntProducts = useRef(null);
 
     const handleSortTypeChange = (value) => {
         dispatch(changeSortType(value));
@@ -34,8 +44,14 @@ export default function MainProducts() {
 
     const handleChangePage = (pageNumber) => {
         dispatch(changeCurrentPage(pageNumber));
-        window.scrollTo(0, 0);
     };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
+    // useEffect(() => {
+    //     dispatch(changeCurrentList(searchText));
+    // }, [searchText]);
 
     return (
         <div className="products__main-products">
@@ -44,14 +60,12 @@ export default function MainProducts() {
                     <span className={cx('showing')}>
                         Showing{' '}
                         <span className={cx('number')}>
-                            {productsPerPage < filteredProducts.length
-                                ? 9
-                                : filteredProducts.length}{' '}
-                            of {filteredProducts.length}
+                            {currentQntProducts.current} of {filteredProducts.length}
                         </span>{' '}
                         Products
                     </span>
                 </div>
+
                 <div className={cx('sortGroup')}>
                     <div className={cx('sort')}>
                         <label>Sort by: </label>
@@ -85,6 +99,14 @@ export default function MainProducts() {
                     </div>
                 </div>
             </div>
+            <span className={cx('searched-message')}>
+                {searchText !== ''
+                    ? currentList.length > 0
+                        ? `There are ${currentList.length} result for "${searchText}"`
+                        : `There are't any result! for "${searchText}"`
+                    : ''}
+            </span>
+
             <ul className={cx('list')}>
                 <Row
                     gutter={[
@@ -96,6 +118,9 @@ export default function MainProducts() {
                         filteredProducts?.length > 0 &&
                         filteredProducts.map((item, index) => {
                             if (Math.ceil(++index / productsPerPage) === currentPage) {
+                                currentQntProducts.current =
+                                    index > productsPerPage ? index - productsPerPage : index;
+
                                 return (
                                     <Col key={item.id} xs={24} sm={24} md={12} lg={8}>
                                         <ProductItem

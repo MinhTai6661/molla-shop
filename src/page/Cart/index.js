@@ -44,7 +44,7 @@ export default function CartPage() {
                             </h3>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                dataName="Layer 1"
+                                // dataName="Layer 1"
                                 width="896"
                                 height="500"
                                 viewBox="0 0 896 747.97143"

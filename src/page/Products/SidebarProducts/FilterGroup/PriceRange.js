@@ -13,7 +13,6 @@ function PriceRange({ currentCollapses }) {
     const currentPriceRange = useSelector(currentPriceRangeSelector);
     const defaultPriceRange = useSelector(defaultPriceRangeSelector);
     const onSliderChange = (value) => {
-        // console.log('onChange: ', value);
         dispatch(changePriceRange(value));
     };
 

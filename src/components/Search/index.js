@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import config from '~/config';
+import { changeSearchText, clearAll } from '~/page/Products/listProductsSlice';
 import { allProductsSelector } from '~/redux/selector';
-import { hindSidebar } from '~/redux/showSlice';
+import { hideSidebar } from '~/redux/showSlice';
 import Dropdown from '../Dropdown';
 import style from './search.module.scss';
 
@@ -17,8 +18,9 @@ function SearchField({ className, normal }) {
     const navigate = useNavigate();
     const allProducts = useSelector(allProductsSelector);
     const dispatch = useDispatch();
-    const [showDropdown, setShowDropdown] = useState(false);
+
     const [valueInput, setValueInput] = useState('');
+    const [showDropdown, setShowDropdown] = useState(false);
     const [result, setResult] = useState([]);
 
     useEffect(() => {
@@ -53,7 +55,16 @@ function SearchField({ className, normal }) {
     const handleClickItem = (id) => {
         navigate(`/product/${id}`);
         setValueInput('');
-        dispatch(hindSidebar());
+        dispatch(hideSidebar());
+    };
+    const handleSearch = () => {
+        if (valueInput !== '') {
+            dispatch(hideSidebar());
+            navigate(`/products`);
+            dispatch(clearAll());
+            dispatch(changeSearchText(valueInput));
+            setShowDropdown(false);
+        }
     };
 
     return (
@@ -70,11 +81,18 @@ function SearchField({ className, normal }) {
                     placeholder="Search product..."
                     onChange={handleChangeInput}
                     value={valueInput}
+                    onKeyPress={(e) => {
+                        e.key === 'Enter' && handleSearch();
+                    }}
                 />
 
-                <Link to={config.router.products} className={cx('search-icon')}>
+                <span
+                    // to={config.router.products}
+                    className={cx('search-icon')}
+                    onClick={handleSearch}
+                >
                     <SearchOutlined />
-                </Link>
+                </span>
             </div>
         </Dropdown>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Products.module.scss';
 import Container from '~/components/Container';
@@ -15,6 +15,7 @@ const cx = classNames.bind(styles);
 
 export default function Products() {
     const screens = useBreakpoint();
+
     return (
         <div className={cx('wrapper')}>
             <Banner title="Products" />

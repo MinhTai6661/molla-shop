@@ -7,6 +7,7 @@ import {
     currentCatSelector,
     filteredProductsNotCatSelector,
     filteredProductsSelector,
+    searchTextSelector,
 } from '~/redux/selector';
 import {
     changeCategory,
@@ -26,6 +27,8 @@ function MenuDropDown({ setShowSidebar }) {
 
     const filteredProductsNotCat = useSelector(filteredProductsNotCatSelector);
     const allCategries = useSelector(allCategriesSelector);
+    const searchText = useSelector(searchTextSelector);
+
     const [currentCollapses, setCurrentCollapses] = useState([]);
 
     const listQntByCategories = useMemo(() => {
@@ -46,7 +49,7 @@ function MenuDropDown({ setShowSidebar }) {
     };
 
     useEffect(() => {
-        dispatch(fetchProductsByCategory(currentCategory));
+        if (!searchText) dispatch(fetchProductsByCategory(currentCategory));
         setShowSidebar(false);
         window.scrollTo(0, 0);
     }, [currentCategory]);

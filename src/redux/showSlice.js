@@ -13,12 +13,12 @@ const showSlice = createSlice({
         handleShowHeader: (state, action) => {
             state.isHeaderShow = action.payload;
         },
-        hindSidebar: (state) => {
+        hideSidebar: (state) => {
             state.isSidebarShow = false;
         },
     },
 });
 
 const { reducer, actions } = showSlice;
-export const { toggleShowSidebar, handleShowHeader, hindSidebar } = actions;
+export const { toggleShowSidebar, handleShowHeader, hideSidebar } = actions;
 export default reducer;

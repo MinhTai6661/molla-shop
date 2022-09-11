@@ -21,14 +21,22 @@ export const sortTypeSelector = (state) => state.listProducts.sortType;
 export const orderTypeSelector = (state) => state.listProducts.orderType;
 export const currentListProductsSelector = (state) => state.listProducts.currentListProducts;
 export const currentPageSelector = (state) => state.listProducts.currentPage;
+export const searchTextSelector = (state) => state.listProducts.searchText;
 export const filteredProductsSelector = createSelector(
     currentListProductsSelector,
     currentCatSelector,
     currentPriceRangeSelector,
     sortTypeSelector,
     orderTypeSelector,
-    (currentListProducts, currentCat, currentPriceRange, sortType, orderType) => {
+    searchTextSelector,
+
+    (currentListProducts, currentCat, currentPriceRange, sortType, orderType, searchText) => {
         const arrCopied = [...currentListProducts];
+        // if (searchText) {
+        //     return currentListProducts.filter((product) =>
+        //         product.title.trim().toLowerCase().includes(searchText),
+        //     );
+        // }
 
         if (orderType !== 'default') {
             if (orderType === 'lowest') {

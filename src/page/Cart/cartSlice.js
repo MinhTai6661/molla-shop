@@ -32,7 +32,6 @@ const cartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            console.log(action.payload.quantity);
             const checkExist = (item) => item.id === action.payload.id;
             const isExist = state.products.some(checkExist);
 
@@ -69,6 +68,7 @@ const cartSlice = createSlice({
 
             message.config({
                 // top: 100,
+
                 duration: 2,
                 maxCount: 1,
             });
@@ -76,6 +76,7 @@ const cartSlice = createSlice({
         removeFromCart: (state, action) => {
             const index = state.products.findIndex((item) => item.id === action.payload);
             state.products.splice(index, 1);
+            message.info('remove successful!');
         },
         changeQuantity: (state, action) => {
             const index = state.products.findIndex((item) => item.id === action.payload.id);

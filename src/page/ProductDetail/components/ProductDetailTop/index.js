@@ -79,7 +79,7 @@ export default function ProductDetailTop({ currentProduct }) {
                                 >
                                     ADD TO CART
                                 </Button>
-                                <Button primary fill>
+                                <Button primary fill disabled>
                                     ADD TO WISHLISH
                                 </Button>
                             </div>

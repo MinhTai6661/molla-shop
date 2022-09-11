@@ -24,7 +24,6 @@ function CartDetail(props) {
     };
 
     const handleConfirm = (id) => {
-        message.info('remove successful!');
         dispatch(removeFromCart(id));
     };
     return (
