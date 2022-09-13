@@ -14,7 +14,7 @@ import { addToCart } from '~/page/Cart/cartSlice';
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ id, title, price, category, image, oldPrice, rate, countRate }) {
+function ProductItem({ id, title, price, category, image, oldPrice, rate, countRate, isLoading }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleClickItem = () => {
@@ -37,7 +37,7 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
         // });
     };
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { loading: isLoading })}>
             <div className={cx('main')}>
                 <div className={cx('thumb')}>
                     <img className={cx('img')} src={image} alt={title} onClick={handleClickItem} />
@@ -93,13 +93,14 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
 }
 
 ProductItem.propTypes = {
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    category: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    price: PropTypes.number,
+    category: PropTypes.string,
+    image: PropTypes.string,
     oldPrice: PropTypes.string,
     rate: PropTypes.number,
     countRate: PropTypes.number,
+    isLoading: PropTypes.bool,
 };
 
 export default ProductItem;

@@ -13,6 +13,7 @@ const listProductsSlice = createSlice({
         orderType: 'default',
         currentListProducts: [],
         currentPage: 1,
+        isLoading: false,
 
         allProducts: [], // to referent, dont touch
     },
@@ -36,29 +37,21 @@ const listProductsSlice = createSlice({
         },
 
         clearAll: (state, action) => {
-            state.searchText = '';
-
             state.currentCategory = state.defaultPriceRange;
             state.currentCategory = 'all';
             state.sortType = 'default';
             state.orderType = 'default';
             state.currentPriceRange = state.defaultPriceRange;
+            state.currentListProducts = state.allProducts;
+            state.searchText = '';
         },
         changeCurrentPage: (state, action) => {
             state.currentPage = action.payload;
         },
-        changeSearchText: (state, action) => {
+        changeCurrentList: (state, action) => {
             state.searchText = action.payload;
             const currentList = state.allProducts.filter((product) =>
-                product.title.trim().toLowerCase().includes(action.payload),
-            );
-            console.log('currentList', currentList);
-
-            state.currentListProducts = currentList;
-        },
-        changeCurrentList: (state, action) => {
-            const currentList = state.allProducts.filter((product) =>
-                product.title.trim().toLowerCase().includes(action.payload),
+                product.title.trim().toLowerCase().includes(action.payload.trim()),
             );
 
             state.currentListProducts = currentList;
@@ -66,12 +59,20 @@ const listProductsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProductsByCategory.pending, (state, action) => {})
+            .addCase(fetchProductsByCategory.pending, (state, action) => {
+                state.isLoading = true;
+            })
             .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+                state.isLoading = false;
                 state.currentListProducts = action.payload;
             })
-            .addCase(fetchAllProductsFix.fulfilled, (state, action) => {
+            .addCase(fetchAllProductsFix.pending, (state, action) => {
+                state.isLoading = true;
                 // phát sinh do chưa tối ưu code từ ban đầu
+                state.allProducts = action.payload;
+            })
+            .addCase(fetchAllProductsFix.fulfilled, (state, action) => {
+                state.isLoading = false;
                 state.allProducts = action.payload;
             });
     },
@@ -107,7 +108,6 @@ export const {
     changeOrderType,
     clearAll,
     changeCurrentPage,
-    changeSearchText,
     changeCurrentList,
 } = actions;
 export default reducer;

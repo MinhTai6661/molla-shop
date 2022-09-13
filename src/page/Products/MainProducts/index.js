@@ -1,4 +1,4 @@
-import { Col, Pagination, Row, Select } from 'antd';
+import { Col, Pagination, Row, Select, Spin } from 'antd';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,12 +11,7 @@ import {
     searchTextSelector,
     sortTypeSelector,
 } from '~/redux/selector';
-import {
-    changeCurrentList,
-    changeCurrentPage,
-    changeOrderType,
-    changeSortType,
-} from '../listProductsSlice';
+import { changeCurrentPage, changeOrderType, changeSortType } from '../listProductsSlice';
 import './custom.scss';
 import styles from './MainProducts.module.scss';
 
@@ -31,6 +26,8 @@ export default function MainProducts() {
     const sortType = useSelector(sortTypeSelector);
     const orderType = useSelector(orderTypeSelector);
     const currentPage = useSelector(currentPageSelector);
+    const isLoading = useSelector((state) => state.listProducts.isLoading);
+    console.log('MainProducts ~ isLoading', isLoading);
 
     const [productsPerPage, setProductsPerPage] = useState(9);
     const currentQntProducts = useRef(null);
@@ -48,10 +45,6 @@ export default function MainProducts() {
     useEffect(() => {
         window.scrollTo(0, 0);
     });
-
-    // useEffect(() => {
-    //     dispatch(changeCurrentList(searchText));
-    // }, [searchText]);
 
     return (
         <div className="products__main-products">
@@ -106,45 +99,63 @@ export default function MainProducts() {
                         : `There are't any result! for "${searchText}"`
                     : ''}
             </span>
-
-            <ul className={cx('list')}>
+            {isLoading ? (
                 <Row
                     gutter={[
                         { xs: 0, md: 10, lg: 20, xxl: 30 },
                         { xs: 10, sm: 10, lg: 20, xxl: 30 },
                     ]}
                 >
-                    {filteredProducts &&
-                        filteredProducts?.length > 0 &&
-                        filteredProducts.map((item, index) => {
-                            if (Math.ceil(++index / productsPerPage) === currentPage) {
-                                currentQntProducts.current =
-                                    index > productsPerPage ? index - productsPerPage : index;
-
-                                return (
-                                    <Col key={item.id} xs={24} sm={24} md={12} lg={8}>
-                                        <ProductItem
-                                            id={item.id}
-                                            category={item.category}
-                                            image={item.image}
-                                            price={item.price}
-                                            title={item.title}
-                                            rate={item.rating.rate}
-                                            countRate={item.rating.count}
-                                        />
-                                    </Col>
-                                );
-                            }
-                        })}
+                    {[1, 2, 3].map(() => (
+                        <Col xs={24} sm={24} md={12} lg={8}>
+                            <ProductItem isLoading />
+                        </Col>
+                    ))}
                 </Row>
-            </ul>
-            <Pagination
-                defaultCurrent={1}
-                current={currentPage}
-                defaultPageSize={productsPerPage}
-                total={filteredProducts?.length || 100}
-                onChange={handleChangePage}
-            />
+            ) : (
+                <>
+                    <ul className={cx('list')}>
+                        <Row
+                            gutter={[
+                                { xs: 0, md: 10, lg: 20, xxl: 30 },
+                                { xs: 10, sm: 10, lg: 20, xxl: 30 },
+                            ]}
+                        >
+                            {filteredProducts &&
+                                filteredProducts?.length > 0 &&
+                                filteredProducts.map((item, index) => {
+                                    if (Math.ceil(++index / productsPerPage) === currentPage) {
+                                        currentQntProducts.current =
+                                            index > productsPerPage
+                                                ? index - productsPerPage
+                                                : index;
+
+                                        return (
+                                            <Col key={item.id} xs={24} sm={24} md={12} lg={8}>
+                                                <ProductItem
+                                                    id={item.id}
+                                                    category={item.category}
+                                                    image={item.image}
+                                                    price={item.price}
+                                                    title={item.title}
+                                                    rate={item.rating.rate}
+                                                    countRate={item.rating.count}
+                                                />
+                                            </Col>
+                                        );
+                                    }
+                                })}
+                        </Row>
+                    </ul>
+                    <Pagination
+                        defaultCurrent={1}
+                        current={currentPage}
+                        defaultPageSize={productsPerPage}
+                        total={filteredProducts?.length || 0}
+                        onChange={handleChangePage}
+                    />
+                </>
+            )}
         </div>
     );
 }

@@ -9,11 +9,16 @@ const cx = className.bind(style);
 
 function MenuList({ vertical, className }) {
     const dispatch = useDispatch();
+    const handleClickMenuItem = () => {
+        dispatch(hideSidebar());
+        window.scrollTo(0, 0);
+    };
 
     return (
         <ul className={`${cx('menu-list', { vertical })} ${[className]}`}>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.home}
                 >
@@ -23,6 +28,7 @@ function MenuList({ vertical, className }) {
 
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.products}
                 >
@@ -31,6 +37,7 @@ function MenuList({ vertical, className }) {
             </li>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.contact}
                 >
@@ -39,6 +46,7 @@ function MenuList({ vertical, className }) {
             </li>
             <li className={cx('menu-item')}>
                 <NavLink
+                    onClick={handleClickMenuItem}
                     className={(nav) => cx('menu-link', { active: nav.isActive })}
                     to={config.router.aboutUs}
                 >
