@@ -6,7 +6,7 @@ const productsSlice = createSlice({
     initialState: {
         allCategries: [],
 
-        productsByCategory: [],
+        // productsByCategory: [],
 
         allProducts: [],
     },

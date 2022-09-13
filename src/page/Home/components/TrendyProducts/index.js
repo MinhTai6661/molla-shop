@@ -1,16 +1,11 @@
 import classNames from 'classnames/bind';
-import { useDispatch, useSelector } from 'react-redux';
-import Slider from 'react-slick';
-import Container from '~/components/Container';
-import ProductItem from '~/components/ProductItem';
-import { allProductsSelector, allCategriesSelector } from '~/redux/selector';
-import styles from './TrendyProducts.module.scss';
-import settings from './settings';
 import { useEffect, useRef, useState } from 'react';
-import { get } from '~/utils/axiosRequest';
-import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { fetchProductByCaregories } from '~/redux/productsSlice';
+import { useSelector } from 'react-redux';
+import Container from '~/components/Container';
 import ProductsCarousel from '~/components/ProductsCarousel';
+import { allCategriesSelector, allProductsSelector } from '~/redux/selector';
+import { get } from '~/utils/axiosRequest';
+import styles from './TrendyProducts.module.scss';
 const cx = classNames.bind(styles);
 
 function TrendyProducts() {
@@ -30,6 +25,7 @@ function TrendyProducts() {
             setCurrentProducts(currentCat !== 'all' ? res : allProducts);
         };
         getProduct();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentCat]);
 
     return (

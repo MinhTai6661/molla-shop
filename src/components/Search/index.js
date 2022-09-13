@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import config from '~/config';
-import { changeSearchText, clearAll } from '~/page/Products/listProductsSlice';
+import { changeCurrentList, clearAll } from '~/page/Products/listProductsSlice';
 import { allProductsSelector } from '~/redux/selector';
 import { hideSidebar } from '~/redux/showSlice';
 import Dropdown from '../Dropdown';
@@ -53,7 +53,7 @@ function SearchField({ className, normal }) {
     };
 
     const handleClickItem = (id) => {
-        navigate(`/product/${id}`);
+        navigate(`/product-detail/${id}`);
         setValueInput('');
         dispatch(hideSidebar());
     };
@@ -62,7 +62,7 @@ function SearchField({ className, normal }) {
             dispatch(hideSidebar());
             navigate(`/products`);
             dispatch(clearAll());
-            dispatch(changeSearchText(valueInput));
+            dispatch(changeCurrentList(valueInput));
             setShowDropdown(false);
         }
     };

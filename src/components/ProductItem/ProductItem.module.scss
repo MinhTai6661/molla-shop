@@ -195,3 +195,92 @@ a > .wrapper {
     justify-content: center;
     margin-top: 20px;
 }
+
+$backgroundSkeleton: #ddd;
+@mixin skeletonBackground {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $backgroundSkeleton;
+    z-index: 2;
+}
+@mixin gradianSkeleton {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $backgroundSkeleton;
+    z-index: 3;
+    background: linear-gradient(
+        to right,
+        $backgroundSkeleton,
+        rgb(224, 222, 222),
+        $backgroundSkeleton
+    );
+    animation: skeleton 2s ease-in-out infinite alternate-reverse;
+}
+
+.loading {
+    &.wrapper {
+        cursor: default;
+    }
+    .btn-group,
+    .add {
+        display: none;
+    }
+    .thumb,
+    .info,
+    .evaluate {
+        border-radius: 10px;
+        overflow: hidden;
+        &::after {
+            @include skeletonBackground();
+        }
+    }
+    .thumb {
+        position: relative;
+        padding-bottom: 10px;
+
+        &::after {
+            @include skeletonBackground();
+        }
+        &::before {
+            @include gradianSkeleton();
+        }
+    }
+    .info {
+        position: relative;
+
+        &::after {
+            @include skeletonBackground();
+        }
+        &::before {
+            @include gradianSkeleton();
+        }
+    }
+    .evaluate {
+        position: relative;
+        margin-top: 10px;
+        padding-top: 10px;
+        &::after {
+            @include skeletonBackground();
+        }
+        &::before {
+            @include gradianSkeleton();
+        }
+    }
+}
+
+@keyframes skeleton {
+    0% {
+        left: -200%;
+    }
+    100% {
+        left: 100%;
+    }
+}

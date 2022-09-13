@@ -43,3 +43,9 @@
         margin-bottom: 20px;
     }
 }
+
+@media (max-width: 575px) {
+    .sort {
+        flex-direction: column;
+    }
+}

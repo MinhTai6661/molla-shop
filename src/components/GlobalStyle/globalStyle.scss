@@ -85,7 +85,9 @@ html *::-webkit-scrollbar-track {
 .ant-row {
     height: 100% !important;
 }
-
+button.slick-arrow {
+    display: none !important;
+}
 // .slick-prev {
 //     // left: 50px !important;
 // }
