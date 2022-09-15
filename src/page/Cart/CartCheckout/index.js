@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeShippingPrice } from '../cartSlice';
 import { cartProductsSelector } from '~/redux/selector';
 import formatter from '~/config/format';
+import Sumary from '~/components/Sumary';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -31,9 +33,9 @@ function CartCheckout(props) {
         return subTotal + radioValue;
     }, [allProductsCart, radioValue]);
 
+    const handeSubmit = () => {};
     return (
-        <div className={cx('checkout')}>
-            <h3 className={cx('checkout__title')}> cart total</h3>
+        <Sumary className={cx('checkout')} title="cart total">
             <div className={cx('subtotal')}>
                 <h4>subtotal</h4>
                 <span className={cx('subtotal-price')}> {formatter.format(subTotal)}</span>
@@ -70,16 +72,17 @@ function CartCheckout(props) {
             </div>
 
             <Button
-                onClick={handleClickCheckout}
+                to={config.router.checkout}
                 style={{ width: '100%' }}
                 type="submit"
                 outline
                 primary
                 rightIcon={<ArrowRightOutlined />}
+                onClick={handeSubmit}
             >
                 Checkout
             </Button>
-        </div>
+        </Sumary>
     );
 }
 

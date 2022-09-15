@@ -14,6 +14,7 @@ function Button({
     large = false,
     text = false,
     rouded = false,
+    full = false,
     disabled = false,
     rightIcon,
     leftIcon,
@@ -36,6 +37,7 @@ function Button({
         fill,
         rouded,
         secondary,
+        full,
         [className]: className,
     });
     const props = {

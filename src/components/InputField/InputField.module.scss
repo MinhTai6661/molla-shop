@@ -1,0 +1,51 @@
+.wrapper {
+    color: var(--text-color-3);
+    font-weight: 300;
+    font-size: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+    label {
+        display: block;
+        text-transform: capitalize;
+    }
+    input,
+    textarea {
+        border: 1px solid rgb(231, 231, 231);
+        width: 100%;
+        outline: none;
+        padding: 10px;
+        box-sizing: border-box;
+        transition: 0.5s;
+        border-radius: 2px;
+        margin-bottom: 10px;
+
+        &:focus {
+            border-color: var(--primary-color);
+        }
+    }
+    textarea {
+        height: 150px;
+    }
+    // &.isRequire {
+    //     input,
+    //     textarea {
+    //         text-transform: capitalize;
+    //     }
+    // }
+    &.is-error {
+        input {
+            border-color: var(--secondary-color);
+        }
+    }
+    .error {
+        color: var(--secondary-color);
+        font-style: italic;
+        font-size: 1.3rem;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
+    }
+}

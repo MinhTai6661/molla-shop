@@ -65,12 +65,6 @@
         }
     }
     .checkout {
-        position: sticky;
-        top: var(--header-height);
-        padding: 20px;
-        background-color: #f9f9f9;
-        border: 1px dashed #999;
-        text-transform: capitalize;
         h4 {
             margin-bottom: 0;
         }

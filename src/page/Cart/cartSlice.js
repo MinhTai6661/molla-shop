@@ -62,6 +62,7 @@ const cartSlice = createSlice({
                     className: 'custom-class',
                     style: {
                         textTransform: 'capitalize',
+                        zIndex: 99999,
                     },
                 });
             }

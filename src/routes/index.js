@@ -5,6 +5,7 @@ import ContactPage from '~/page/Contact';
 import HomePage from '~/page/Home';
 import ProductDetail from '~/page/ProductDetail';
 import Products from '~/page/Products';
+import Checkout from '~/page/Checkout';
 const publicRoutes = [
     {
         path: config.router.home,
@@ -39,6 +40,11 @@ const publicRoutes = [
     {
         path: config.router.cart,
         component: CartPage,
+        layout: DefaultLayout,
+    },
+    {
+        path: config.router.checkout,
+        component: Checkout,
         layout: DefaultLayout,
     },
 ];

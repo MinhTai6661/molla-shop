@@ -218,9 +218,9 @@ $backgroundSkeleton: #ddd;
     z-index: 3;
     background: linear-gradient(
         to right,
-        $backgroundSkeleton,
-        rgb(224, 222, 222),
-        $backgroundSkeleton
+        $backgroundSkeleton 40%,
+        rgb(247, 245, 245),
+        $backgroundSkeleton 80%
     );
     animation: skeleton 2s ease-in-out infinite alternate-reverse;
 }
@@ -281,6 +281,7 @@ $backgroundSkeleton: #ddd;
         left: -200%;
     }
     100% {
-        left: 100%;
+        left: 50%;
+        transform: translateX(100%);
     }
 }

@@ -18,7 +18,7 @@ function ProductItem({ id, title, price, category, image, oldPrice, rate, countR
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleClickItem = () => {
-        navigate(`/product/${id}`);
+        navigate(`/product-detail/${id}`);
         window.scrollTo(0, 0);
     };
     const handleAddProduct = (product) => {

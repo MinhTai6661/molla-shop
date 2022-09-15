@@ -24,6 +24,10 @@ html {
 }
 * {
     box-sizing: border-box;
+    &::selection {
+        background-color: var(--primary-color);
+        filter: brightness(0.8);
+    }
 }
 body {
     font-family: 'Poppins', sans-serif;
@@ -121,4 +125,8 @@ button.slick-arrow {
             }
         }
     }
+}
+
+.ant-select-dropdown {
+    z-index: 100 !important;
 }
