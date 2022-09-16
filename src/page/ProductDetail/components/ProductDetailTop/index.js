@@ -25,6 +25,7 @@ export default function ProductDetailTop({ currentProduct }) {
     };
     const handleAddToCart = () => {
         dispatch(addToCart({ ...currentProduct, quantity: quantity }));
+
         setQuantity(1);
         // message.success({
         //     content: `Add ${quantity} \"${currentProduct.title}\" successfuly !`,

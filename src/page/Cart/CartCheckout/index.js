@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Controller, useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
@@ -7,7 +7,7 @@ import { Radio, Space } from 'antd';
 import Button from '~/components/Button';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeShippingPrice } from '../cartSlice';
+import { changeShippingPrice, changeSubtotal } from '../cartSlice';
 import { cartProductsSelector } from '~/redux/selector';
 import formatter from '~/config/format';
 import Sumary from '~/components/Sumary';
@@ -18,20 +18,16 @@ const cx = classNames.bind(styles);
 function CartCheckout(props) {
     const dispatch = useDispatch();
     const allProductsCart = useSelector(cartProductsSelector);
-    const radioValue = useSelector((state) => state.cart.shippingPrice);
+    const shippingPrice = useSelector((state) => state.cart.shippingPrice);
+    const subTotal = useSelector((state) => state.cart.subTotal);
     const handleChangeRadioValue = (e) => {
         dispatch(changeShippingPrice(e.target.value));
     };
 
-    const handleClickCheckout = () => {};
-
-    const subTotal = useMemo(() => {
-        return allProductsCart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+    useEffect(() => {
+        const result = allProductsCart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+        dispatch(changeSubtotal(result));
     }, [allProductsCart]);
-
-    const total = useMemo(() => {
-        return subTotal + radioValue;
-    }, [allProductsCart, radioValue]);
 
     const handeSubmit = () => {};
     return (
@@ -43,7 +39,7 @@ function CartCheckout(props) {
 
             <div className={cx('shipping')}>
                 <h4>shipping</h4>
-                <Radio.Group value={radioValue} onChange={handleChangeRadioValue}>
+                <Radio.Group value={shippingPrice} onChange={handleChangeRadioValue}>
                     <Space direction="vertical" defaultValue={1}>
                         <Radio value={0}>
                             <div className={cx('shipping__item')}>
@@ -68,7 +64,7 @@ function CartCheckout(props) {
             </div>
             <div className={cx('total')}>
                 <span>Total:</span>
-                <span> {formatter.format(total)}</span>
+                <span> {formatter.format(subTotal + shippingPrice)}</span>
             </div>
 
             <Button

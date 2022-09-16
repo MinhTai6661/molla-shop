@@ -12,7 +12,8 @@ const cx = classNames.bind(styles);
 
 export default function CheckoutSumary() {
     const cartProducts = useSelector(cartProductsSelector);
-    console.log('CheckoutSumary ~ cartProducts', cartProducts);
+    const shippingPrice = useSelector((state) => state.cart.shippingPrice);
+    const subTotal = useSelector((state) => state.cart.subTotal);
 
     return (
         <Sumary className={cx('wrapper')} title="your order">
@@ -39,15 +40,15 @@ export default function CheckoutSumary() {
             </div>
             <div className={cx('title')}>
                 <span> Subtotal: </span>
-                <span> $200 </span>
+                <span> {config.formatter.format(subTotal)} </span>
             </div>
             <div className={cx('title')}>
                 <span> shipping: </span>
-                <span> $200 </span>
+                <span> {config.formatter.format(shippingPrice)} </span>
             </div>
             <div className={cx('title', { total: true })}>
                 <span> total: </span>
-                <span> $200 </span>
+                <span> {config.formatter.format(subTotal + shippingPrice)} </span>
             </div>
             <Button outline primary full type="submit">
                 Place order

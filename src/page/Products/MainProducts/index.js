@@ -27,7 +27,6 @@ export default function MainProducts() {
     const orderType = useSelector(orderTypeSelector);
     const currentPage = useSelector(currentPageSelector);
     const isLoading = useSelector((state) => state.listProducts.isLoading);
-    console.log('MainProducts ~ isLoading', isLoading);
 
     const [productsPerPage, setProductsPerPage] = useState(9);
     const currentQntProducts = useRef(null);
@@ -96,7 +95,7 @@ export default function MainProducts() {
                 {searchText !== ''
                     ? currentList.length > 0
                         ? `There are ${currentList.length} result for "${searchText}"`
-                        : `There are't any result! for "${searchText}"`
+                        : `There aren't any result for "${searchText}"`
                     : ''}
             </span>
             {isLoading ? (
@@ -106,11 +105,13 @@ export default function MainProducts() {
                         { xs: 10, sm: 10, lg: 20, xxl: 30 },
                     ]}
                 >
-                    {[1, 2, 3].map(() => (
-                        <Col xs={24} sm={24} md={12} lg={8}>
-                            <ProductItem isLoading />
-                        </Col>
-                    ))}
+                    {Array(3)
+                        .fill(0)
+                        .map((item, index) => (
+                            <Col key={index} xs={24} sm={24} md={12} lg={8}>
+                                <ProductItem isLoading />
+                            </Col>
+                        ))}
                 </Row>
             ) : (
                 <>

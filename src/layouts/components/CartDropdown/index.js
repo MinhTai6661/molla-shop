@@ -23,34 +23,41 @@ function CartDropdown() {
 
     return (
         <div className={cx('wrapper')}>
-            <ul className={cx('list')} tabIndex="-1">
-                {cartProducts && cartProducts.length > 0 ? (
-                    cartProducts.map((product) => (
-                        <DropdownItem key={product.id} product={product} />
-                    ))
-                ) : (
-                    <>
-                        <div className={cx('empty')}>
-                            <img src={images.emptyCart} />
-                            <h3>no have any product on cart</h3>
+            {cartProducts && cartProducts.length > 0 ? (
+                <>
+                    <ul className={cx('list')} tabIndex="-1">
+                        {cartProducts.map((product) => (
+                            <DropdownItem key={product.id} product={product} />
+                        ))}
+                    </ul>
+                    <div className={cx('footer')}>
+                        <div className={cx('total')}>
+                            <span className={cx('total__label')}>TOTAL:</span>
+                            <span className={cx('total__price')}>{formatter.format(subTotal)}</span>
                         </div>
-                    </>
-                )}
-            </ul>
-            <div className={cx('footer')}>
-                <div className={cx('total')}>
-                    <span className={cx('total__label')}>TOTAL:</span>
-                    <span className={cx('total__price')}>{formatter.format(subTotal)}</span>
-                </div>
-                <div className={cx('btn__group')}>
-                    <Button to="/cart" primary fill>
-                        View Cart
-                    </Button>
-                    <Button to="/checkout" outline primary rightIcon={<ArrowRightOutlined />}>
-                        Checkout
-                    </Button>
-                </div>
-            </div>
+                        <div className={cx('btn__group')}>
+                            <Button to="/cart" primary fill>
+                                View Cart
+                            </Button>
+                            <Button
+                                to="/checkout"
+                                outline
+                                primary
+                                rightIcon={<ArrowRightOutlined />}
+                            >
+                                Checkout
+                            </Button>
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className={cx('empty')}>
+                        <img src={images.emptyCart} />
+                        <h3>no have any product on cart</h3>
+                    </div>
+                </>
+            )}
         </div>
     );
 }

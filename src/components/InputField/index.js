@@ -6,16 +6,28 @@ const cx = classNames.bind(styles);
 
 function InputField({ label, placeholder, value, name, isRequire, textaria, register, errors }) {
     return (
-        <div className={cx('wrapper', { isRequire, 'is-error': !!errors[name] })}>
+        <div className={cx('wrapper', { isRequire, 'is-error': errors ? !!errors[name] : false })}>
             <label>
                 {label} {isRequire && '*'}
             </label>
             {textaria ? (
-                <textarea {...register(name, { isRequire })} placeholder={placeholder}></textarea>
+                register ? (
+                    <textarea
+                        {...register(name, { isRequire })}
+                        placeholder={placeholder}
+                    ></textarea>
+                ) : (
+                    <textarea placeholder={placeholder && placeholder}></textarea>
+                )
+            ) : register ? (
+                <input
+                    {...register(name, { isRequire })}
+                    placeholder={placeholder && placeholder}
+                />
             ) : (
-                <input {...register(name, { isRequire })} placeholder={placeholder} />
+                <input placeholder={placeholder} />
             )}
-            {!!errors && <p className={cx('error')}> {errors[name]?.message}</p>}
+            {errors && errors[name] && <p className={cx('error')}> {errors[name]?.message}</p>}
         </div>
     );
 }

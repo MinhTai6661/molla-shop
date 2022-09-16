@@ -1,30 +1,9 @@
 import { Col, Row } from 'antd';
-import React from 'react';
-import InputField from '~/components/InputField';
 import classNames from 'classnames/bind';
+import InputField from '~/components/InputField';
 import styles from '.././Checkout.module.scss';
-import { yupResolver } from '@hookform/resolvers/yup';
-
-import { useForm } from 'react-hook-form';
-import Button from '~/components/Button';
-import * as yup from 'yup';
 
 const cx = classNames.bind(styles);
-const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-const schema = yup
-    .object({
-        firstName: yup.string().required('please enter your first name'),
-        lastName: yup.string().required('please enter your last name'),
-        email: yup.string().email('please enter right format').required('please enter your email'),
-        phoneNumber: yup
-            .string()
-            .required('please enter your phone number')
-            .matches(phoneRegExp, 'Phone number is not valid'),
-        country: yup.string().required('please enter your country'),
-        address: yup.string().required('please enter your address'),
-    })
-    .required();
 
 export default function CheckoutForm({ register, errors }) {
     return (

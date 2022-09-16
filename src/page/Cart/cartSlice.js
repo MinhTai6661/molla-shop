@@ -5,22 +5,12 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         shippingPrice: 0,
+        subTotal: 0,
         products: [
             // {
             //     category: "men's clothing",
             //     countRate: 120,
             //     id: 1,
-            //     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-            //     oldPrice: undefined,
-            //     price: 109.95,
-            //     quantity: 1,
-            //     rate: 3.9,
-            //     title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-            // },
-            // {
-            //     category: "men's clothing",
-            //     countRate: 120,
-            //     id: 2,
             //     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
             //     oldPrice: undefined,
             //     price: 109.95,
@@ -86,9 +76,24 @@ const cartSlice = createSlice({
         changeShippingPrice: (state, action) => {
             state.shippingPrice = action.payload;
         },
+        changeSubtotal: (state, action) => {
+            state.subTotal = action.payload;
+        },
+        clearAllCart: (state, action) => {
+            state.products = [];
+            state.shippingPrice = 0;
+            state.subTotal = 0;
+        },
     },
 });
 
 const { actions, reducer } = cartSlice;
-export const { addToCart, removeFromCart, changeQuantity, changeShippingPrice } = actions;
+export const {
+    addToCart,
+    removeFromCart,
+    changeQuantity,
+    changeShippingPrice,
+    changeSubtotal,
+    clearAllCart,
+} = actions;
 export default reducer;

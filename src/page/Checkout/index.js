@@ -1,15 +1,18 @@
-import React from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Col, message, Row } from 'antd';
 import classNames from 'classnames/bind';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import Banner from '~/components/Banner';
+import Container from '~/components/Container';
+import config from '~/config';
+import { clearAllCart } from '../Cart/cartSlice';
 import styles from './Checkout.module.scss';
 import CheckoutForm from './CheckoutForm';
-import Container from '~/components/Container';
-import { Col, Row } from 'antd';
-import Sumary from '~/components/Sumary';
-import Banner from '~/components/Banner';
 import CheckoutSumary from './CheckoutSumary';
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 const cx = classNames.bind(styles);
 
@@ -30,12 +33,12 @@ const schema = yup
     .required();
 
 export default function Checkout() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setValue,
-        resetField,
         reset,
     } = useForm({
         resolver: yupResolver(schema),
@@ -50,16 +53,28 @@ export default function Checkout() {
             note: '',
         },
     });
-    // console.log('Checkout ~ reset', reset);
-    // console.log('Checkout ~ resetField', resetField);
-
-    // console.log('Checkout ~ useForm', useForm());
 
     const onSubmit = (data) => {
         console.log('onSubmit ~ data', data);
-
+        //request data :))
         reset('');
+        dispatch(clearAllCart());
+        navigate(config.router.cart);
+        message.success({
+            content: `checkout successfuly! Thank for your order!`,
+            style: {
+                textTransform: 'capitalize',
+            },
+        });
+        message.config({
+            duration: 5,
+        });
     };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <Banner title="checkout" />

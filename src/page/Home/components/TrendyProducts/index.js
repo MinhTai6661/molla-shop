@@ -14,15 +14,22 @@ function TrendyProducts() {
     const allCategries = useSelector(allCategriesSelector);
     const [currentCat, setCurrentCat] = useState('all');
     const [currentProducts, setCurrentProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleChangeCat = (category) => {
         setCurrentCat(category);
     };
     useEffect(() => {
         const getProduct = async () => {
-            const path = `products/category/${currentCat !== 'all' && currentCat}`;
-            const res = await get(path);
-            setCurrentProducts(currentCat !== 'all' ? res : allProducts);
+            try {
+                setIsLoading(true);
+                const path = `products/category/${currentCat !== 'all' && currentCat}`;
+                const res = await get(path);
+                setCurrentProducts(currentCat !== 'all' ? res : allProducts);
+                setIsLoading(false);
+            } catch (error) {
+                alert('Something went wrong !');
+            }
         };
         getProduct();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,10 +66,12 @@ function TrendyProducts() {
                 </ul>
                 <div className={cx('product-list')}>
                     {currentProducts.length ? (
-                        <ProductsCarousel listProducts={currentProducts} />
+                        <ProductsCarousel isLoading={isLoading} listProducts={currentProducts} />
                     ) : (
                         allProducts &&
-                        allProducts.length && <ProductsCarousel listProducts={allProducts} />
+                        allProducts.length && (
+                            <ProductsCarousel isLoading={isLoading} listProducts={allProducts} />
+                        )
                     )}
                 </div>
             </div>

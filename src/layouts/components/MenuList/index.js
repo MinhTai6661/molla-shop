@@ -44,16 +44,7 @@ function MenuList({ vertical, className }) {
                     contact
                 </NavLink>
             </li>
-            <li className={cx('menu-item')}>
-                <NavLink
-                    onClick={handleClickMenuItem}
-                    className={(nav) => cx('menu-link', { active: nav.isActive })}
-                    to={config.router.aboutUs}
-                >
-                    About us
-                </NavLink>
-            </li>
-        </ul>
+            </ul>
         // </div>
     );
 }

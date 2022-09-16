@@ -10,7 +10,7 @@ import { Grid } from 'antd';
 
 const cx = classNames.bind(styles);
 const { useBreakpoint } = Grid;
-function ProductsCarousel({ listProducts }) {
+function ProductsCarousel({ listProducts, isLoading }) {
     const screens = useBreakpoint();
     const slider = useRef();
     const [showArrow, setShowArrow] = useState(false);
@@ -39,21 +39,25 @@ function ProductsCarousel({ listProducts }) {
                     slider.current = c;
                 }}
             >
-                {listProducts?.length &&
-                    listProducts &&
-                    listProducts.map((item) => (
-                        <div key={item.id}>
-                            <ProductItem
-                                id={item.id}
-                                category={item.category}
-                                image={item.image}
-                                price={item.price}
-                                title={item.title}
-                                rate={item.rating.rate}
-                                countRate={item.rating.count}
-                            />
-                        </div>
-                    ))}
+                {isLoading
+                    ? Array(4)
+                          .fill(0)
+                          .map((item, index) => <ProductItem key={index} isLoading />)
+                    : listProducts?.length &&
+                      listProducts &&
+                      listProducts.map((item) => (
+                          <div key={item.id}>
+                              <ProductItem
+                                  id={item.id}
+                                  category={item.category}
+                                  image={item.image}
+                                  price={item.price}
+                                  title={item.title}
+                                  rate={item.rating.rate}
+                                  countRate={item.rating.count}
+                              />
+                          </div>
+                      ))}
             </Slider>
             {showArrow && (
                 <button

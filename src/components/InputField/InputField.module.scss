@@ -35,7 +35,8 @@
     //     }
     // }
     &.is-error {
-        input {
+        input,
+        textarea {
             border-color: var(--secondary-color);
         }
     }
