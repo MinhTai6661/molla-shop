@@ -38,7 +38,7 @@ const cartSlice = createSlice({
                     });
                 } else {
                     message.warning({
-                        content: `\"${action.payload.title}\" successfuly! have to less than or equal 999 products`,
+                        content: `\"${action.payload.title}\"  have to less than or equal 999 products`,
                         className: 'custom-class',
                         style: {
                             textTransform: 'capitalize',
@@ -58,8 +58,6 @@ const cartSlice = createSlice({
             }
 
             message.config({
-                // top: 100,
-
                 duration: 2,
                 maxCount: 1,
             });

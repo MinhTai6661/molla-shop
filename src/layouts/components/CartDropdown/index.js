@@ -54,7 +54,7 @@ function CartDropdown() {
                 <>
                     <div className={cx('empty')}>
                         <img src={images.emptyCart} />
-                        <h3>no have any product on cart</h3>
+                        <h3>not have any product on cart</h3>
                     </div>
                 </>
             )}

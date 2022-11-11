@@ -61,9 +61,8 @@ function CartDetail(props) {
                                     </td>
                                     <td>
                                         <QuantityProduct
-                                            min={1}
                                             className={cx('detail__quantity')}
-                                            defaultValue={product?.quantity || 1}
+                                            defaultValue={product?.quantity}
                                             size="medium"
                                             onChange={(value) =>
                                                 handleChangeQuantity(value, product.id)

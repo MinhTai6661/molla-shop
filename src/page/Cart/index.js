@@ -39,7 +39,7 @@ export default function CartPage() {
                     ) : (
                         <div className={cx('cart-empty')}>
                             <h3>
-                                No have any products!
+                                Not have any products!
                                 <Link to={config.router.products}> Shop now</Link>
                             </h3>
                             <svg
